@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agents for Agents — AI that helps real estate agents make more money</title>
+<meta name="description" content="I am a working real estate agent who builds AI systems for my own business, then hands them to other agents. Free guide, skill packs, and done for you installs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fbfaf8;
+  --paper2:#f4f2ee;
+  --ink:#14131a;
+  --mute:#6b6875;
+  --line:#e7e3dc;
+  --indigo:#4f46e5;
+  --violet:#7c5cff;
+  --coral:#ff7a59;
+  --amber:#ffb347;
+  --grad:linear-gradient(100deg,#4f46e5 0%,#7c5cff 42%,#ff7a59 100%);
+  --gradsoft:linear-gradient(100deg,rgba(79,70,229,.11),rgba(255,122,89,.11));
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+.wrap{max-width:1140px;margin:0 auto;padding:0 26px;position:relative;z-index:2}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.gradtext{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* nav */
+nav{position:sticky;top:0;z-index:60;background:rgba(251,250,248,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:15.5px;letter-spacing:-.015em}
+.logo{width:27px;height:27px;border-radius:9px;background:var(--grad);position:relative;flex:none}
+.logo:after{content:"";position:absolute;inset:6.5px;border-radius:3.5px;background:var(--paper)}
+.nl{display:flex;align-items:center;gap:28px;font-size:14.5px;color:var(--mute);font-weight:500}
+.nl a:hover{color:var(--ink)}
+.pill{padding:10px 19px;border-radius:999px;background:var(--ink);color:var(--paper) !important;font-weight:600;font-size:13.5px}
+@media(max-width:840px){.nl a:not(.pill){display:none}}
+
+/* hero */
+header{padding:88px 0 76px;position:relative;overflow:hidden}
+.glow{position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0}
+.glow.one{width:560px;height:560px;background:rgba(124,92,255,.20);top:-230px;left:-120px}
+.glow.two{width:460px;height:460px;background:rgba(255,122,89,.17);top:-140px;right:-120px}
+.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 16px 8px 10px;border-radius:999px;
+  border:1px solid var(--line);background:#fff;font-size:13px;color:var(--mute);margin-bottom:28px;
+  box-shadow:0 2px 10px rgba(20,19,26,.04)}
+.dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.16)}
+h1{font-size:clamp(40px,6vw,72px);line-height:1.04;letter-spacing:-.035em;font-weight:800;max-width:17ch}
+.lede{margin-top:26px;font-size:clamp(17px,2vw,21px);color:var(--mute);max-width:60ch;line-height:1.6}
+.btns{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:16px 28px;border-radius:12px;font-weight:600;font-size:15.5px;transition:.18s;border:1px solid transparent}
+.btn-g{background:var(--grad);color:#fff;box-shadow:0 10px 30px rgba(124,92,255,.28)}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(124,92,255,.36)}
+.btn-o{border-color:var(--line);background:#fff;color:var(--ink)}
+.btn-o:hover{border-color:#c9c3b8}
+.micro{margin-top:15px;font-size:13px;color:#94909c}
+
+/* what I do */
+.who{background:var(--paper2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.who .wrap{padding-top:88px;padding-bottom:88px}
+section{padding:96px 0;position:relative}
+.eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--violet);margin-bottom:15px}
+h2{font-size:clamp(30px,4.2vw,48px);line-height:1.08;letter-spacing:-.03em;font-weight:800;max-width:20ch}
+.sub{margin-top:18px;color:var(--mute);font-size:17.5px;line-height:1.66;max-width:62ch}
+
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
+@media(max-width:900px){.ways{grid-template-columns:1fr}}
+.way{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 28px;position:relative;transition:.2s}
+.way:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(20,19,26,.07)}
+.way .step{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--violet);letter-spacing:.1em}
+.way h3{font-size:22px;font-weight:700;margin-top:14px;letter-spacing:-.02em}
+.way p{margin-top:11px;color:var(--mute);font-size:15px;line-height:1.65}
+.way .who4{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:13.5px;color:#8b8794}
+.way .who4 b{color:var(--ink);font-weight:600}
+
+/* story */
+.story .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:66px;align-items:start}
+@media(max-width:940px){.story .wrap{grid-template-columns:1fr;gap:38px}}
+.story p{color:var(--mute);font-size:16.5px;line-height:1.78;margin-top:16px}
+.story p b{color:var(--ink);font-weight:600}
+.sidecard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:0 14px 40px rgba(20,19,26,.05)}
+.sidecard .h{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.sidecard ul{list-style:none;margin-top:16px}
+.sidecard li{padding:13px 0;border-top:1px solid var(--line);font-size:15px;display:flex;gap:12px;align-items:baseline}
+.sidecard li:first-of-type{border-top:none;padding-top:4px}
+.sidecard li .k{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--violet);flex:none;width:52px}
+
+/* stats */
+.stats{background:var(--ink);color:#fff}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;padding:56px 26px}
+.stat .n{font-size:36px;font-weight:800;letter-spacing:-.035em}
+.stat .l{font-size:13.5px;color:#9d99a8;margin-top:7px;line-height:1.45}
+@media(max-width:840px){.stats .wrap{grid-template-columns:repeat(2,1fr);gap:32px}}
+
+/* terminal */
+.term{margin-top:52px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#14131a;
+  box-shadow:0 26px 70px rgba(20,19,26,.18)}
+.tbar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.tdot{width:10px;height:10px;border-radius:50%;background:#3a3844}
+.tname{margin-left:10px;font-size:12px;color:#7a7686}
+.tbody{padding:20px 22px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.9;color:#e8e6ef;overflow-x:auto}
+.c-dim{color:#7a7686}.c-v{color:#a78bfa}.c-o{color:#ff9a7a}.c-g{color:#5ee6a8}
+.cursor{display:inline-block;width:8px;height:14px;background:#5ee6a8;vertical-align:-2px;animation:blink 1.1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* stack tiles */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+@media(max-width:900px){.tiles{grid-template-columns:1fr}}
+.tile{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;transition:.2s}
+.tile:hover{border-color:#d5cfc4;transform:translateY(-2px)}
+.tile .ico{width:34px;height:34px;border-radius:10px;background:var(--gradsoft);border:1px solid var(--line);margin-bottom:15px}
+.tile h4{font-size:17.5px;font-weight:700;letter-spacing:-.015em}
+.tile p{margin-top:8px;color:var(--mute);font-size:14.5px;line-height:1.6}
+
+/* approval */
+.show{display:grid;grid-template-columns:1fr 350px;gap:64px;align-items:center}
+@media(max-width:960px){.show{grid-template-columns:1fr;gap:40px}}
+.phone{border:1px solid var(--line);border-radius:30px;padding:11px;background:#fff;box-shadow:0 30px 70px rgba(20,19,26,.13)}
+.pscreen{border-radius:21px;background:var(--paper2);padding:16px 14px}
+.msg{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px}
+.msg .who2{font-size:11px;color:var(--violet);letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+.msg .body{margin-top:9px;color:#4a4753;font-size:12.8px;line-height:1.55}
+.msg .draft{margin-top:12px;padding:12px;border-radius:10px;background:var(--gradsoft);border:1px solid rgba(124,92,255,.2);font-size:12.5px;color:#3b3746;line-height:1.55}
+.approve{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:12px}
+.ab{text-align:center;padding:10px 4px;border-radius:9px;font-size:11.5px;font-weight:700;border:1px solid var(--line);color:var(--mute)}
+.ab.y{background:#eafaf0;border-color:#a7e8c4;color:#127a45}
+.checklist{list-style:none;margin-top:26px}
+.checklist li{padding:14px 0 14px 30px;position:relative;border-top:1px solid var(--line);color:var(--mute);font-size:15.5px;line-height:1.55}
+.checklist li:before{content:"";position:absolute;left:2px;top:21px;width:9px;height:9px;border-radius:50%;background:var(--grad)}
+.checklist b{color:var(--ink);font-weight:600}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+@media(max-width:940px){.plans{grid-template-columns:1fr}}
+.plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column}
+.plan.hot{border-color:rgba(124,92,255,.4);box-shadow:0 22px 56px rgba(124,92,255,.16)}
+.plan .kind{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.plan h3{font-size:23px;font-weight:700;margin-top:12px;letter-spacing:-.02em;line-height:1.2}
+.price{font-size:42px;font-weight:800;margin-top:16px;letter-spacing:-.035em}
+.price small{font-size:14px;font-weight:500;color:var(--mute);letter-spacing:0}
+.plan p{margin-top:12px;color:var(--mute);font-size:14.5px;line-height:1.62}
+.plan ul{list-style:none;margin-top:20px;font-size:14.2px}
+.plan li{padding:10px 0 10px 24px;position:relative;color:#4a4753;border-top:1px solid var(--line)}
+.plan li:before{content:"→";position:absolute;left:0;color:var(--violet);font-size:13px}
+.plan .go{margin-top:auto;padding-top:26px}
+.plan .go .btn{width:100%;justify-content:center}
+
+/* final */
+.final{background:var(--paper2);border-top:1px solid var(--line);text-align:center}
+.final h2{margin:0 auto;max-width:20ch}
+.final .sub{margin:18px auto 0}
+.final .btns{justify-content:center}
+footer{padding:38px 0;border-top:1px solid var(--line);font-size:13px;color:#94909c}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><div class="logo"></div> agents for agents</div>
+    <div class="nl">
+      <a href="#help">What I do</a>
+      <a href="#story">My story</a>
+      <a href="#stack">The systems</a>
+      <a class="pill" href="#pricing">Start free</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="glow one"></div><div class="glow two"></div>
+  <div class="wrap">
+    <div class="badge"><span class="dot"></span> Built by a working agent, not a software company</div>
+    <h1>I help real estate agents use AI to <span class="gradtext">make more money.</span></h1>
+    <p class="lede">Not the theory. The actual systems. I am a practicing agent in Massachusetts, I built AI that works my pipeline every day, and now I hand the same thing to other agents so they stop losing deals to their own follow up.</p>
+    <div class="btns">
+      <a class="btn btn-g" href="#pricing">Get the free guide</a>
+      <a class="btn btn-o" href="#help">See how I can help</a>
+    </div>
+    <div class="micro">Free. No credit card. Nothing to connect to your CRM.</div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n">6:30 AM</div><div class="l">My expired listings are pulled and ranked before I wake up</div></div>
+    <div class="stat"><div class="n">1,314</div><div class="l">Contacts in the first database I ever audited. My own</div></div>
+    <div class="stat"><div class="n">909</div><div class="l">Of them had never been called by anyone</div></div>
+    <div class="stat"><div class="n">Zero</div><div class="l">Messages sent to a client without me reading it first</div></div>
+  </div>
+</div>
+
+<section class="who" id="help">
+  <div class="wrap">
+    <div class="eyebrow">What I actually do</div>
+    <h2>Three ways to work with me. Start at the top.</h2>
+    <p class="sub">Most agents know AI matters and have no idea where to start. Every prompt they try sounds like a robot wrote it, so they give up and go back to doing it by hand. Here is the ladder, and the first rung is free.</p>
+
+    <div class="ways">
+      <div class="way">
+        <div class="step">01 / LEARN IT</div>
+        <h3>Free guide and daily posts</h3>
+        <p>Seven real systems explained in plain English, plus a new one broken down every day. Start on day one even if you have never opened Claude.</p>
+        <div class="who4"><b>For you if:</b> you want to try this yourself and need someone to show you where to start.</div>
+      </div>
+      <div class="way">
+        <div class="step">02 / GET THE SKILLS</div>
+        <h3>Ready made skill packs</h3>
+        <p>The prompts and playbooks I use, packaged so they install in ten minutes and run forever. They learn your voice before they write a word.</p>
+        <div class="who4"><b>For you if:</b> you want the shortcut instead of building it from scratch.</div>
+      </div>
+      <div class="way">
+        <div class="step">03 / HAVE IT BUILT</div>
+        <h3>Audits and done for you</h3>
+        <p>I run the audit on your database and show you the money sitting in it. If you want the whole system installed in your business, we do that too.</p>
+        <div class="who4"><b>For you if:</b> you would rather it just be running by next week.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">How I got here</div>
+      <h2>I did not lose deals to better agents. I lost them to my own inbox.</h2>
+      <p>I grew up in Sudbury and I sell real estate in Metro West Massachusetts with The Avenue Team by SERHANT. Luxury and new development, mostly.</p>
+      <p>A while back I went back through my database and found the same thing every agent finds when they finally look: <b>hundreds of people I had talked to once and never called again.</b> Not because I did not care. Because there were 40 of them and one of me, and the ones who shouted loudest got the attention.</p>
+      <p>So I started building. First a script that pulled my expired listings every morning. Then something that read my calls and wrote the follow up. Then the thing that audits the whole database and tells me who I forgot.</p>
+      <p><b>None of it is theory.</b> It runs on a machine in my office every single day, on real clients, with real commission on the line. When it breaks, it breaks on my business first.</p>
+      <p>Other agents started asking how. So now I show them.</p>
+    </div>
+    <div class="sidecard">
+      <div class="h">The short version</div>
+      <ul>
+        <li><span class="k">WHO</span><span>Henry Rowe. Practicing agent, not a coach.</span></li>
+        <li><span class="k">WHERE</span><span>Metro West Massachusetts and Boston.</span></li>
+        <li><span class="k">TEAM</span><span>The Avenue Team by SERHANT.</span></li>
+        <li><span class="k">WHY</span><span>I was losing deals to my own follow up.</span></li>
+        <li><span class="k">NOW</span><span>Seven systems running daily in my own book.</span></li>
+        <li><span class="k">GOAL</span><span>Hand them to agents who do not have time to build.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="eyebrow">The systems</div>
+    <h2>What is actually running right now.</h2>
+    <p class="sub">Not demos I recorded once for a video. This is a real morning in my business, and every one of these is something you can have too.</p>
+
+    <div class="term">
+      <div class="tbar"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+        <span class="tname mono">this morning, 6:30 AM</span></div>
+      <div class="tbody mono">
+<span class="c-v">6:30</span> <span class="c-dim">signing into the MLS</span> <span class="c-g">ok</span><br>
+<span class="c-v">6:31</span> <span class="c-dim">expired listings found</span> <span class="c-o">31</span><br>
+<span class="c-v">6:31</span> <span class="c-dim">owners matched in public records</span> <span class="c-o">28</span><br>
+<span class="c-v">6:32</span> <span class="c-dim">phone numbers appended</span> <span class="c-o">24</span><br>
+<span class="c-v">6:32</span> <span class="c-dim">ranked by who is worth calling first</span><br>
+<span class="c-v">6:32</span> <span class="c-g">call sheet ready</span> <span class="c-dim">before the alarm</span> <span class="cursor"></span>
+      </div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="ico"></div><h4>Expired pipeline</h4><p>Pulls every expiration in my market each morning, finds the owner, appends a phone, and ranks them.</p></div>
+      <div class="tile"><div class="ico"></div><h4>Follow up engine</h4><p>Reads my calls, builds the plan, writes the text and email, then waits for my approval.</p></div>
+      <div class="tile"><div class="ico"></div><h4>Pipeline autopsy</h4><p>Read only sweep of the database. Who went dark, who was never called, what I promised.</p></div>
+      <div class="tile"><div class="ico"></div><h4>Appointment prep</h4><p>Seller research, the brief, and the presentation build themselves the moment it is booked.</p></div>
+      <div class="tile"><div class="ico"></div><h4>Morning brief</h4><p>Calendar, calls due, new leads, open loops, ad spend. One message before 7am.</p></div>
+      <div class="tile"><div class="ico"></div><h4>Anniversary touch</h4><p>Every past client hears from me on their closing date with a real update on their home.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="who">
+  <div class="wrap show">
+    <div>
+      <div class="eyebrow">The part that matters most</div>
+      <h2>It does the work. You still approve every word.</h2>
+      <p class="sub">Almost every AI tool being sold to agents right now wants to talk to your clients for you. Mine will not. It drafts everything, then it stops and waits for you. That is not a limitation, it is the whole point.</p>
+      <ul class="checklist">
+        <li><b>It listens to the call</b> and builds the follow up plan with real dates</li>
+        <li><b>It writes the actual message</b> in your voice, not a template</li>
+        <li><b>It holds the send</b> if your lead replies before you approve it</li>
+        <li><b>It never invents anything.</b> If your record does not prove it, it does not say it</li>
+      </ul>
+    </div>
+    <div class="phone">
+      <div class="pscreen">
+        <div class="msg">
+          <div class="who2">Follow up engine</div>
+          <div class="body">Called <b>Grady Zink</b> about the B Street condo. No answer, left a voicemail. Suggested plan: text tonight, email Thursday with the two comps he asked about.</div>
+          <div class="draft">"Hey Grady, Henry with the Avenue Team. Left you a voicemail about your place on B Street. I have buyers looking in that building. Worth a two minute call?"</div>
+          <div class="approve"><div class="ab y">Approve</div><div class="ab">Iterate</div><div class="ab">Deny</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="eyebrow">Where to start</div>
+    <h2>Start free. Pay only if the free thing works.</h2>
+    <p class="sub">Three things. No webinar, no discovery call with a closer, no upsell ladder.</p>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="kind">Start here</div>
+        <h3>The AI Realtor Stack</h3>
+        <div class="price">Free</div>
+        <p>All seven systems explained the way I would explain them to a friend at the office, including the honest caveat on each one.</p>
+        <ul>
+          <li>One page per system</li>
+          <li>What to build first, and why</li>
+          <li>The compliance rules nobody mentions</li>
+        </ul>
+        <div class="go"><a class="btn btn-o" href="#" data-payhip="ai-realtor-stack">Send me the guide</a></div>
+      </div>
+
+      <div class="plan hot">
+        <div class="kind">Everything</div>
+        <h3>The Vault</h3>
+        <div class="price">$397 <small>once</small></div>
+        <p>Thirteen packs, 263 skills. Prospecting, follow up, listing appointments, transactions, past clients, content, and ads. Each one turns something you already have into something finished.</p>
+        <ul>
+          <li>Works in Claude Code and on claude.ai</li>
+          <li>Learns your voice before it writes</li>
+          <li>Installs itself in under ten minutes</li>
+          <li>Updates free, forever</li>
+        </ul>
+        <div class="go"><a class="btn btn-g" href="#" data-payhip="the-vault">Get the vault</a></div>
+      </div>
+
+      <div class="plan">
+        <div class="kind">Done for you</div>
+        <h3>Pipeline Autopsy</h3>
+        <div class="price">$197</div>
+        <p>I run the audit on your database and send you the report: what is dark, who was never called, what you promised, and the ten worth calling this week.</p>
+        <ul>
+          <li>Read only. Nothing gets changed</li>
+          <li>Ten leads with the exact next move</li>
+          <li>Back to you in 48 hours</li>
+        </ul>
+        <div class="go"><a class="btn btn-o" href="#" data-payhip="pipeline-autopsy">Audit my database</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Start with the free guide.</h2>
+    <p class="sub">Seven systems, the honest version, and nobody chasing you with an email sequence on day three.</p>
+    <div class="btns"><a class="btn btn-g" href="#" data-payhip="ai-realtor-stack">Get the free guide</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 agents for agents. Built in Massachusetts by a working agent.</div>
+    <div>Instagram &nbsp;·&nbsp; Email</div>
+  </div>
+</footer>
+
+</body>
+</html>

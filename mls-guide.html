@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude in Your MLS</title>
+<meta name="description" content="A plain walkthrough for agents with zero tech background: what to search, what to click, how to get Claude working inside your MLS, and what to type first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fbfaf8;
+  --paper2:#f4f2ee;
+  --card:#ffffff;
+  --ink:#14131a;
+  --mute:#6b6875;
+  --faint:#94909c;
+  --line:#e7e3dc;
+  --violet:#7c5cff;
+  --coral:#ff7a59;
+  --grad:linear-gradient(100deg,#4f46e5 0%,#7c5cff 42%,#ff7a59 100%);
+  --warn-bg:#fff6ec;
+  --warn-ink:#8a5a1a;
+  --shadow:0 10px 30px rgba(20,19,26,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#100f16; --paper2:#17161f; --card:#1a1923; --ink:#f3f1f7; --mute:#a19dad;
+    --faint:#837f8f; --line:#2b2936; --violet:#a78bfa; --coral:#ff9a7a;
+    --grad:linear-gradient(100deg,#8b83ff 0%,#a78bfa 42%,#ff9a7a 100%);
+    --warn-bg:#241c12; --warn-ink:#f0c184; --shadow:0 10px 30px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#100f16; --paper2:#17161f; --card:#1a1923; --ink:#f3f1f7; --mute:#a19dad;
+  --faint:#837f8f; --line:#2b2936; --violet:#a78bfa; --coral:#ff9a7a;
+  --grad:linear-gradient(100deg,#8b83ff 0%,#a78bfa 42%,#ff9a7a 100%);
+  --warn-bg:#241c12; --warn-ink:#f0c184; --shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--paper);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.62}
+a{color:inherit}
+.mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:4px}
+
+nav{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:-.015em;text-decoration:none}
+.logo{width:24px;height:24px;border-radius:8px;background:var(--grad);position:relative;flex:none}
+.logo:after{content:"";position:absolute;inset:6px;border-radius:3px;background:var(--paper)}
+nav .right{font-size:14px;color:var(--mute);text-decoration:none}
+nav .right:hover{color:var(--ink)}
+
+header{padding:62px 0 34px}
+h1{font-size:clamp(32px,5vw,46px);line-height:1.1;letter-spacing:-.03em;font-weight:800;text-wrap:balance}
+header p{margin-top:18px;font-size:18px;color:var(--mute);line-height:1.6}
+.time{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11.5px;padding:6px 11px;border-radius:7px;
+  border:1px solid var(--line);background:var(--card);color:var(--mute)}
+.chip b{color:var(--ink);font-weight:500}
+
+.parts{display:flex;flex-direction:column;gap:0;padding-bottom:70px}
+.part{padding:44px 0;border-top:1px solid var(--line)}
+.plabel{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--violet);margin-bottom:12px}
+h2{font-size:clamp(23px,3.4vw,30px);line-height:1.16;letter-spacing:-.025em;font-weight:800;text-wrap:balance}
+.part > p{margin-top:14px;color:var(--mute);font-size:16.5px}
+
+.steps{display:flex;flex-direction:column;gap:26px;margin-top:30px;counter-reset:s}
+.step{display:grid;grid-template-columns:34px 1fr;gap:16px;align-items:start;counter-increment:s}
+.step:before{content:counter(s);grid-row:1 / span 3;width:34px;height:34px;border-radius:10px;
+  background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:var(--violet);font-weight:500;
+  box-shadow:var(--shadow)}
+.step h3{font-size:18px;font-weight:700;letter-spacing:-.015em;line-height:1.35;padding-top:5px}
+.step p{margin-top:8px;color:var(--mute);font-size:16px;line-height:1.65}
+.step p + p{margin-top:8px}
+.step b{color:var(--ink);font-weight:600}
+.see{margin-top:11px;font-size:14.6px;color:var(--mute);padding:11px 14px;border-radius:10px;
+  background:var(--paper2);border:1px solid var(--line);line-height:1.55}
+.see b{color:var(--ink)}
+.type{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13.6px;background:var(--paper2);
+  border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--ink);white-space:nowrap}
+.key{display:inline-block;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;
+  border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 7px;background:var(--card)}
+
+.note{margin-top:26px;border-left:3px solid var(--coral);background:var(--warn-bg);border-radius:0 10px 10px 0;
+  padding:16px 18px}
+.note .h{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--warn-ink);font-weight:500;margin-bottom:6px}
+.note p{color:var(--warn-ink);font-size:15.4px;line-height:1.6}
+.note p b{font-weight:700}
+
+ul.plain{display:flex;flex-direction:column;gap:12px;margin-top:22px;list-style:none}
+ul.plain li{position:relative;padding-left:22px;color:var(--mute);font-size:16.2px;line-height:1.6}
+ul.plain li:before{content:"";position:absolute;left:1px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--grad)}
+ul.plain b{color:var(--ink);font-weight:600}
+
+.fix{display:flex;flex-direction:column;gap:14px;margin-top:26px}
+.f{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+.f h4{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.f p{margin-top:7px;color:var(--mute);font-size:15.4px;line-height:1.6}
+
+.prompt{margin-top:22px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#14131a;
+  box-shadow:0 18px 46px rgba(20,19,26,.16)}
+.pbar{display:flex;align-items:center;gap:10px;padding:11px 13px;border-bottom:1px solid rgba(255,255,255,.08);background:#191822}
+.pname{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11.5px;color:#8b8798;flex:1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.copy{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  padding:6px 12px;border-radius:7px;border:1px solid rgba(255,255,255,.14);background:transparent;color:#c9c5d6;
+  cursor:pointer;transition:.16s;flex:none}
+.copy:hover{background:rgba(255,255,255,.08);color:#fff}
+.copy.done{color:#5ee6a8;border-color:rgba(94,230,168,.4)}
+pre{margin:0;padding:18px 20px;overflow-x:auto;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12.4px;line-height:1.75;color:#e2e0ea;white-space:pre}
+
+.final{background:var(--paper2);border-top:1px solid var(--line)}
+.final .wrap{padding:56px 24px;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.final p{color:var(--mute);font-size:16.5px}
+.btn{margin-top:8px;display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:11px;
+  font-weight:600;font-size:15.5px;text-decoration:none;background:var(--grad);color:#fff;
+  box-shadow:0 10px 26px rgba(124,92,255,.24);transition:.18s}
+.btn:hover{transform:translateY(-2px)}
+footer{padding:30px 0;font-size:13px;color:var(--faint);text-align:left}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}html{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="logo"></span> agents for agents</a>
+    <a class="right" href="#prompts">Skip to the prompts</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <h1>How to set up Claude inside your MLS</h1>
+    <p>Start to finish, assuming you have never installed a browser extension in your life. What to search, what to click, what to do when it does not work, and what to type once it is running.</p>
+    <div class="time">
+      <span class="chip"><b>Setup</b> about 10 minutes</span>
+      <span class="chip"><b>Skill needed</b> none</span>
+      <span class="chip"><b>Cost</b> a paid Claude plan</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap parts">
+
+  <section class="part" id="need">
+    <div class="plabel">Part 1</div>
+    <h2>Two things you need first</h2>
+    <ul class="plain">
+      <li><b>Google Chrome.</b> This only works in Chrome on a computer. Not Safari, not Edge, not your phone. If you do not have Chrome, search Google for <span class="type">download chrome</span>, click the result from google.com, and install it.</li>
+      <li><b>A paid Claude plan.</b> Pro, Max, Team, or Enterprise. The free plan cannot use this. If you do not have one, go to <span class="type">claude.ai</span> and upgrade before you start.</li>
+    </ul>
+    <p>That is it. You do not need to download anything else, write any code, or connect anything to your CRM.</p>
+  </section>
+
+  <section class="part" id="install">
+    <div class="plabel">Part 2</div>
+    <h2>Install the Claude extension</h2>
+    <p>An extension is just a small add on that lives in your browser toolbar. You install it once and it stays there.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div>
+          <h3>Open Chrome and go to the Chrome Web Store</h3>
+          <p>In the address bar at the top, type <span class="type">chrome web store claude</span> and hit enter. Click the result whose web address starts with <b>chromewebstore.google.com</b>.</p>
+          <p>The listing you want is called <b>Claude in Chrome</b> and the maker is <b>Anthropic</b>. If you see a different name or a different maker, back out. Fake extensions exist.</p>
+          <div class="see"><b>Faster way:</b> go straight to <span class="type">claude.ai/chrome</span> and it will send you to the right page.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div>
+          <h3>Click the blue Add to Chrome button</h3>
+          <p>A small box drops down from the top of your screen asking if you are sure. Click <b>Add extension</b>.</p>
+          <div class="see"><b>What you should see:</b> a message saying it was added, and a new icon appearing near the top right of Chrome.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div>
+          <h3>Pin it to your toolbar so you can find it again</h3>
+          <p>This is the step everybody skips, and then they cannot find it five minutes later. At the top right of Chrome there is a small <b>puzzle piece icon</b>. Click it. You will see a list of your extensions. Click the <b>pin icon</b> next to Claude.</p>
+          <div class="see"><b>What you should see:</b> the Claude icon now sits permanently in your toolbar at the top right.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div>
+          <h3>Click the Claude icon and sign in</h3>
+          <p>Use the same email and password you use at claude.ai. If you normally sign in with Google, click the Google button here too.</p>
+          <div class="see"><b>What you should see:</b> a panel opens along the right side of your browser window. That side panel is where you will type everything from now on.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div>
+          <h3>Approve the permissions it asks for</h3>
+          <p>It will ask for permission to read and act on pages. Say yes. That is what lets it see the page you are looking at.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <div class="h">Set it to ask before acting</div>
+      <p>In the box where you type, there is a small dropdown for how it behaves. It usually starts on <b>Automatically approve</b>. While you are learning, switch it to <b>Manually approve</b> so it checks with you before each action. You can loosen it later once you trust it.</p>
+    </div>
+  </section>
+
+  <section class="part" id="test">
+    <div class="plabel">Part 3</div>
+    <h2>Test it on a normal website first</h2>
+    <p>Do this before you go anywhere near your MLS. It takes thirty seconds and it tells you whether the problem is the setup or the MLS.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div>
+          <h3>Open any website you like</h3>
+          <p>A news site, your brokerage site, anything.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Click the Claude icon to open the side panel</h3>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Type this and hit enter</h3>
+          <p><span class="type">What is on this page? Describe it to me.</span></p>
+          <div class="see"><b>If it describes the page back to you,</b> everything is working and you can move on. <b>If it says it cannot see the page,</b> refresh the page, then close and reopen the side panel.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="part" id="mls">
+    <div class="plabel">Part 4</div>
+    <h2>Point it at your MLS</h2>
+    <p>You stay in charge of the login and the searching. Claude does the reading and the typing up. Keeping it that way is what keeps this simple and inside the rules.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div>
+          <h3>Log in to your MLS yourself, the normal way</h3>
+          <p>Claude never gets your username or password, and never needs it. It works inside the session you already opened.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Run your search by hand</h3>
+          <p>For example: expired listings, last 30 days, your county. Leave the results on the screen.</p>
+          <p>Set results per page to the highest number your MLS offers, and write down the total number of results. You will use that number to check its work later.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Open the side panel and approve the site</h3>
+          <p>It may ask for permission for this specific website. Approve it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Ask it one easy question before anything big</h3>
+          <p><span class="type">Look at this results list and tell me how many listings you can see.</span></p>
+          <div class="see"><b>If the number it says matches what is on your screen,</b> you are ready for the real prompts below.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <div class="h">Three rules, and they matter</div>
+      <p><b>Read only.</b> Never point it at anything that edits listings, saves searches, or touches client records. <b>Keep the raw listing data private.</b> The statistics you calculate are yours to publish, the listing by listing table is not. <b>Never name another agent or office</b> in anything you post or say. Your MLS participant agreement is the document that governs you, so read it once.</p>
+    </div>
+  </section>
+
+  <section class="part" id="problems">
+    <div class="plabel">Part 5</div>
+    <h2>When something does not work</h2>
+    <p>Nearly every problem is one of these seven, and all of them take under a minute.</p>
+
+    <div class="fix">
+      <div class="f">
+        <h4>I cannot find the Claude icon anywhere</h4>
+        <p>Click the puzzle piece icon at the top right of Chrome, find Claude in the list, and click the pin icon next to it.</p>
+      </div>
+      <div class="f">
+        <h4>It keeps asking me to sign in, or it will not let me in</h4>
+        <p>It requires a paid plan, so check that yours is active. Then sign out of claude.ai in the browser and sign back in. If your brokerage manages your account, your administrator may need to enable the extension.</p>
+      </div>
+      <div class="f">
+        <h4>It says it cannot see the page</h4>
+        <p>Refresh the page, wait for it to fully finish loading, then reopen the side panel. MLS pages are heavy and it sometimes reads too early. Also confirm you approved permission for that website.</p>
+      </div>
+      <div class="f">
+        <h4>Everything froze and it stopped responding</h4>
+        <p>Look at your screen for a popup box from the website itself, the kind with an OK button. Those freeze it completely until you click the box yourself. Dismiss it and it will continue.</p>
+      </div>
+      <div class="f">
+        <h4>It only did the first page of results</h4>
+        <p>Tell it exactly where to go: there are four pages of results, work through all of them, page one to page four, then tell me the total.</p>
+      </div>
+      <div class="f">
+        <h4>My MLS logged me out partway through</h4>
+        <p>Normal on any run past twenty minutes. Log back in yourself in the same tab, then type: continue from where you left off. Do not start over, it will redo work you already paid for.</p>
+      </div>
+      <div class="f">
+        <h4>It is slow, or it is eating my usage</h4>
+        <p>Browsing costs more of your plan than a normal chat, so this is expected. Close tabs you are not using, and split big jobs into smaller ones. Sixty listings is a comfortable first run.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="part" id="prompts">
+    <div class="plabel">Part 6</div>
+    <h2>Now the prompting</h2>
+    <p>Work up in this order. The first two teach you how it behaves. The last two are the ones that produce something you can actually use at a listing appointment.</p>
+
+    <h3 style="margin-top:30px;font-size:18px;">Warm up: get a clean list</h3>
+    <p style="margin-top:10px;">With your results on screen, type this. It is short on purpose.</p>
+    <div class="prompt">
+      <div class="pbar"><span class="pname">warm up</span><button class="copy" type="button" data-copy="w1">Copy</button></div>
+      <pre id="w1">Go through this list of expired listings and put them in a table for me.
+One row per listing: MLS number, address, town, list price, days on market.
+Do not skip any. Tell me the total count when you are done.</pre>
+    </div>
+
+    <h3 style="margin-top:34px;font-size:18px;">The one that separates you: price change history</h3>
+    <p style="margin-top:10px;">Price reduction history lives on each listing detail page and never comes through in an export. This tells it to go open each listing and get it. This is the slow part, twenty to forty minutes for sixty listings, and it is worth every minute. Change the county to yours.</p>
+    <div class="prompt">
+      <div class="pbar"><span class="pname">prompt one, gather the data</span><button class="copy" type="button" data-copy="p1">Copy</button></div>
+      <pre id="p1">You have my MLS open in this tab with the expired listings from the last 30
+days in Middlesex County. Before you touch analysis, I need you to enrich
+this data set.
+
+For every listing in the result set, open the listing detail page and pull:
+
+IDENTITY
+- MLS number, full address, town, zip, property type
+- Beds, baths, above grade sqft, lot size, year built
+
+PRICING TIMELINE (this is the part I actually need)
+- Original list price and original list date
+- Every single price change event: date, old price, new price
+- Final list price at expiration
+- Expiration date
+
+MARKET TIME
+- DOM and CDOM as the MLS reports them, separately, do not merge them
+- Any off market and relist events, with dates
+
+Go through them sequentially, one detail page at a time, and do not skip a
+listing because a field looks empty. If a field is genuinely absent, write
+"NOT LISTED" rather than guessing or leaving it blank.
+
+Output a single table, one row per listing, and tell me the total count you
+processed plus any listing you could not open and why.
+
+Do not analyze anything yet. Just the clean table.</pre>
+    </div>
+    <div class="see" style="margin-top:14px;">Copy that table into a Google Sheet before you do anything else, so you are not depending on the chat window to hold it.</div>
+
+    <h3 style="margin-top:34px;font-size:18px;">The one that gives you something to say</h3>
+    <p style="margin-top:10px;">Paste this into the same conversation right after the table is finished, so it still has the data in front of it.</p>
+    <div class="prompt">
+      <div class="pbar"><span class="pname">prompt two, turn it into a market read</span><button class="copy" type="button" data-copy="p2">Copy</button></div>
+      <pre id="p2">Now analyze that data set. Every number you produce must trace back to the
+table you just built. If you cannot compute something from the data you
+have, say so explicitly instead of estimating. Never fabricate a figure.
+
+STEP 1, DERIVED METRICS
+For each listing calculate:
+- Total price cut in dollars and as a percent of original list
+- Number of price reductions
+- Days from list date to FIRST reduction
+- Average days between reductions
+- Average size of each reduction as a percent
+- Original price per sqft and final price per sqft
+
+STEP 2, THE AGGREGATE PICTURE
+- Median and mean DOM, and median CDOM
+- Distribution of reduction counts: how many listings took 0, 1, 2, 3, 4+
+- Median total discount from original list among those that reduced at all
+- Median days to first reduction
+
+STEP 3, THE SEGMENTS
+Break all of the above down three ways:
+- By price band: under $750K, $750K to $1M, $1M to $2M, $2M to $3M, $3M+
+- By town
+- By property type
+
+If any segment has fewer than 5 listings, report the raw count and say the
+sample is too small for a median. Do not compute a median on 3 listings and
+present it as a finding.
+
+STEP 4, THE CORRELATION THAT MATTERS
+Test this specifically: is there a relationship between how FAST a seller
+made their first price reduction and how much TOTAL discount they ended up
+taking? Group the listings into those that reduced within 21 days, those
+that reduced between 22 and 45 days, and those that waited past 45 days or
+never reduced. Compare the total discount and final DOM across those three
+groups.
+
+Also flag the "chasing the market" pattern: listings that made three or more
+reductions of less than 3% each, spaced more than 30 days apart. Count them
+and give me their median total discount versus everyone else.
+
+STEP 5, WHAT ACTUALLY KILLED THESE LISTINGS
+Rank the pricing patterns you can actually evidence from this data, strongest
+signal first. For each one give me the supporting number. Be honest about
+which are correlation and which you genuinely cannot separate. If a factor
+shows no relationship to outcome, say that, do not force a narrative.
+
+STEP 6, THE DELIVERABLES
+
+A) THE NUMBERS. Clean tables for everything above.
+
+B) THE MARKET READ. 350 to 450 words on where the Middlesex County market
+actually is right now based on this evidence. Write it the way I would say
+it to a seller in their kitchen: confident, specific, data first, no hype,
+no doom. Lead with what the data shows, not with what I think about it.
+
+C) THE TALK TRACK. Five spoken lines, each under 15 seconds, each carrying
+one hard number from this analysis. These are what I say out loud at a
+listing appointment. They should sound like a person talking, not a report
+being read.
+
+D) THREE OBJECTION RESPONSES, each answered with a number from this data:
+   1. "Let's just try my price for a few weeks and see what happens."
+   2. "The market is slow right now, that is why it did not sell."
+   3. "My neighbor got their price, why can't I?"
+
+E) THE CONTENT ANGLES. Three specific things in this data that would make
+good short form video, ranked by how counterintuitive they are.
+
+F) WHAT IS MISSING. Tell me exactly what additional data would make this
+analysis materially stronger, and where in the MLS I would pull it.
+
+Rules for all of it: no dashes, no em dashes, use commas or periods. No
+negative descriptors about any property or any agent. Frame everything as
+opportunity and positioning, never as failure or blame.</pre>
+    </div>
+  </section>
+
+  <section class="part" id="check">
+    <div class="plabel">Part 7</div>
+    <h2>Check its work before you quote it</h2>
+    <p>You are about to say these numbers out loud to a homeowner. Four minutes here is cheap insurance.</p>
+    <ul class="plain">
+      <li><b>Does the count match?</b> Compare the number of listings it processed to the result count you wrote down earlier. If it is short, ask which ones it could not open.</li>
+      <li><b>Spot check three listings.</b> Pick the highest price, the lowest, and one in the middle. Open those detail pages yourself and check the price history against its table.</li>
+      <li><b>Watch for tiny samples.</b> A town with four listings should be reported as a count, not a median. If it gave you a median anyway, do not use it.</li>
+      <li><b>Ask it directly:</b> which of these numbers is the weakest, and what would change if you removed the two most extreme listings.</li>
+    </ul>
+  </section>
+
+</div>
+
+<div class="final">
+  <div class="wrap">
+    <h2>Your first run</h2>
+    <p>Install it, test it on a regular website, then run the warm up prompt on sixty expired listings. Once that works, prompt one and prompt two are the same two paste jobs every month for the rest of your career.</p>
+    <a class="btn" href="index.html#pricing">See the skill packs</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 agents for agents. Built in Massachusetts by a working agent.</div>
+    <div style="margin-top:6px;">Not legal advice. Your MLS participant agreement governs what you can pull and publish.</div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var el = document.getElementById(btn.dataset.copy);
+    if(!el) return;
+    var text = el.innerText;
+    var done = function(){
+      btn.textContent = 'Copied';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1800);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, function(){ fallback(text, done); });
+    } else { fallback(text, done); }
+  });
+});
+function fallback(text, done){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly','');
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch(e){}
+  document.body.removeChild(ta);
+}
+</script>
+
+</body>
+</html>
