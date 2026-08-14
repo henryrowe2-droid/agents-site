@@ -123,6 +123,22 @@ h2.display em{font-style:italic;color:var(--accent)}
 .paths p{margin-top:6px;color:var(--mute);font-size:15px;line-height:1.6;max-width:46ch}
 .paths .go{font-size:14px;color:var(--accent);font-weight:500;white-space:nowrap}
 
+
+/* how I solve it */
+.method{border-top:1px solid var(--line)}
+.mrow{display:grid;grid-template-columns:120px 1fr;gap:40px;padding:44px 0;border-bottom:1px solid var(--line);align-items:start}
+@media(max-width:820px){.mrow{grid-template-columns:1fr;gap:14px;padding:34px 0}}
+.mrow .lab{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);padding-top:8px}
+.mrow h3{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,3vw,32px);line-height:1.22;letter-spacing:-.018em;max-width:24ch}
+.mrow p{margin-top:14px;color:var(--ink-2);font-size:16.5px;line-height:1.7;max-width:62ch}
+
+/* problems solved */
+.probs{margin-top:58px;border-top:1px solid var(--line)}
+.prob{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:32px 0;border-bottom:1px solid var(--line);align-items:baseline}
+@media(max-width:860px){.prob{grid-template-columns:1fr;gap:12px;padding:26px 0}}
+.prob .said{font-family:'Instrument Serif',Georgia,serif;font-size:21px;line-height:1.4;color:var(--ink);font-style:italic}
+.prob .now{color:var(--mute);font-size:15.5px;line-height:1.62}
+.prob .now b{color:var(--ink);font-weight:600}
 .close{text-align:center;padding:150px 0}
 .close h2{margin:0 auto;max-width:17ch}
 .close .copy{margin:26px auto 0;text-align:center}
@@ -172,9 +188,9 @@ footer a:hover{color:var(--ink)}
 
 <section class="moment">
   <div class="narrow">
-    <div class="big rv">909</div>
-    <p class="cap rv">People sitting in one agent's database who had never been called. Not once, by anyone.</p>
-    <p class="fine rv">That agent was me. I found it the night I finally looked.</p>
+    <div class="big rv">$222,000</div>
+    <p class="cap rv">Commission sitting unworked in one agent's database. Not cold leads. People who had already raised their hand.</p>
+    <p class="fine rv">That agent was me. 1,314 contacts, 370 of them gone quiet, 909 never called once. I found it the night I finally looked.</p>
   </div>
 </section>
 
@@ -206,6 +222,73 @@ footer a:hover{color:var(--ink)}
       <div class="d rv"><div class="n">07</div><h3>Mining the database</h3><p>The money already sitting in your CRM. Most agents have more of it than they think and have never once looked properly.</p></div>
       <div class="d rv"><div class="n">08</div><h3>Building the brand</h3><p>Showing up consistently without it eating the hours you should be selling in, and without sounding like anybody else.</p></div>
       <div class="d rv"><div class="n">09</div><h3>Buying back time</h3><p>The unglamorous layer underneath all of it. What runs on its own, what waits for you, and what should never be automated at all.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="method">
+  <div class="wrap">
+    <div class="tag rv">How I actually solve it</div>
+    <h2 class="display serif rv">Three rules I will not break, <em>whoever I am building for.</em></h2>
+    <p class="copy rv">The tools change every few months. These do not. Everything I build for an agent, whether it is a small playbook or a system running unattended at six in the morning, gets held to the same three.</p>
+
+    <div class="mrow rv">
+      <div class="lab">Rule one</div>
+      <div>
+        <h3>Fix what you already own before you buy anything new.</h3>
+        <p>Almost every agent who comes to me is about to spend money on more leads. Almost none of them have looked at the ones they already have. The first thing I do is show you what is sitting in your own database, because it is nearly always cheaper, warmer and faster than anything you were about to purchase. Sometimes that conversation ends with you not needing me at all. I would rather that than sell you something you did not need.</p>
+      </div>
+    </div>
+
+    <div class="mrow rv">
+      <div class="lab">Rule two</div>
+      <div>
+        <h3>It sounds like you before it says anything at all.</h3>
+        <p>This is where nearly every agent using AI right now gets caught, and it is why their clients can tell. Nothing I build writes a single word until it has learned how you actually write, from your own messages, in your own rhythm. That step is unglamorous and it is the difference between a tool your clients never notice and one that quietly costs you credibility.</p>
+      </div>
+    </div>
+
+    <div class="mrow rv">
+      <div class="lab">Rule three</div>
+      <div>
+        <h3>Automate the remembering. Never automate the relationship.</h3>
+        <p>The machine should carry the load a staff of four would carry: the research, the timing, the drafting, the follow through, the things that fall through the cracks at nine at night. It should never be the one talking to your client. Every system I build stops and hands the decision back to you, on purpose, every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="tag rv">Problems that walk in the door</div>
+    <h2 class="display serif rv">These are the ones I hear <em>every single week.</em></h2>
+    <p class="copy rv">Different agents, same short list. Left is what they tell me. Right is what changes once we have worked on it.</p>
+
+    <div class="probs">
+      <div class="prob rv">
+        <div class="said">"I know there's money in my database, I just don't know where."</div>
+        <div class="now"><b>You get the map.</b> Who has gone quiet, who was never worked, what you promised and never delivered, and the ten names worth calling this week. Most agents find more than they expected and are not thrilled about it.</div>
+      </div>
+      <div class="prob rv">
+        <div class="said">"My follow up is the weakest part of my business and I know it."</div>
+        <div class="now"><b>It stops depending on your memory.</b> The plan gets built the moment the conversation ends, the words get written for you, and the timing holds whether or not you had a good week.</div>
+      </div>
+      <div class="prob rv">
+        <div class="said">"Everything I write with AI sounds like it was written by AI."</div>
+        <div class="now"><b>It learns you first.</b> Trained on your own words, so what comes out reads like the messages you would have written if you had three uninterrupted hours.</div>
+      </div>
+      <div class="prob rv">
+        <div class="said">"I keep losing listings to agents who aren't better than me."</div>
+        <div class="now"><b>You stop showing up cold.</b> The seller, the property, the history and the angle are handled before you park, and it is built for that appointment, not pulled off a shelf.</div>
+      </div>
+      <div class="prob rv">
+        <div class="said">"I spend my whole Sunday on marketing instead of with my family."</div>
+        <div class="now"><b>The week gets built for you.</b> One sitting, done, in your voice, from what actually happened in your business rather than from a content calendar someone sold you.</div>
+      </div>
+      <div class="prob rv">
+        <div class="said">"I want to use this stuff but I have no idea where to start."</div>
+        <div class="now"><b>You start with one thing that pays for itself.</b> Not fourteen tools. One, in the part of your business that is leaking the most, and only then the next.</div>
+      </div>
     </div>
   </div>
 </section>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Database Audit — find the commission already sitting in your CRM</title>
+<meta name="description" content="A read only audit of your database. What has gone quiet, who was never called, what you promised, and the ten worth calling this week.">
+<meta property="og:title" content="Agents for Agents">
+<meta property="og:description" content="AI built for real estate agents, by one. Systems that work your pipeline while you work your clients.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf8f5;--paper-2:#f2eee8;--ink:#16151a;--ink-2:#3d3a45;--mute:#78737f;
+  --line:#e4ded4;--accent:#4338ca;--accent-2:#7c5cff;--warm:#c2632f;--max:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+.narrow{max-width:760px;margin:0 auto;padding:0 32px}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.012em}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+body:before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.32;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E")}
+main,nav,footer{position:relative;z-index:2}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .85s cubic-bezier(.2,.7,.3,1),transform .85s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+nav{position:sticky;top:0;z-index:80;background:rgba(250,248,245,.82);backdrop-filter:blur(18px);
+  border-bottom:1px solid transparent;transition:border-color .3s}
+nav.stuck{border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:600;letter-spacing:-.01em}
+.mk{width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,var(--accent),var(--accent-2));flex:none;position:relative}
+.mk:after{content:"";position:absolute;inset:6px;border-radius:2.5px;background:var(--paper)}
+.nl{display:flex;align-items:center;gap:32px;font-size:14.5px;color:var(--mute)}
+.nl a:hover{color:var(--ink)}
+.cta-sm{padding:10px 20px;border-radius:100px;background:var(--ink);color:var(--paper) !important;font-weight:500;font-size:14px}
+.cta-sm:hover{background:var(--accent)}
+@media(max-width:900px){.nl a:not(.cta-sm){display:none}}
+
+.hero{padding:120px 0 96px}
+.eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:34px}
+h1.display{font-size:clamp(46px,7.2vw,92px);line-height:1.02;letter-spacing:-.028em;max-width:15ch}
+h1.display em{font-style:italic;color:var(--accent)}
+.hero .lede{margin-top:34px;font-size:clamp(18px,2.1vw,22px);line-height:1.62;color:var(--ink-2);max-width:56ch}
+.acts{margin-top:46px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:17px 32px;border-radius:100px;font-size:15.5px;font-weight:500;
+  transition:.2s cubic-bezier(.2,.7,.3,1);border:1px solid transparent}
+.btn-fill{background:var(--ink);color:var(--paper)}
+.btn-fill:hover{background:var(--accent);transform:translateY(-1px)}
+.btn-line{border-color:var(--line);color:var(--ink);background:rgba(255,255,255,.5)}
+.btn-line:hover{border-color:var(--ink)}
+.hero-note{margin-top:22px;font-size:13.5px;color:var(--mute)}
+
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.4)}
+.strip .wrap{display:flex;gap:56px;padding:26px 32px;flex-wrap:wrap;font-size:13.5px;color:var(--mute)}
+.strip b{color:var(--ink);font-weight:600}
+
+section{padding:120px 0}
+.tag{display:flex;align-items:center;gap:14px;font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:30px}
+.tag:before{content:"";width:28px;height:1px;background:var(--mute);opacity:.5}
+h2.display{font-size:clamp(34px,5vw,60px);line-height:1.06;letter-spacing:-.024em;max-width:20ch}
+h2.display em{font-style:italic;color:var(--accent)}
+.copy{font-size:18px;line-height:1.78;color:var(--ink-2);max-width:66ch}
+.copy p{margin-top:24px}.copy p:first-child{margin-top:28px}
+.copy strong{color:var(--ink);font-weight:600}
+
+.moment{background:var(--ink);color:var(--paper);text-align:center;padding:132px 0}
+.moment .big{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(88px,17vw,220px);line-height:.86;letter-spacing:-.04em}
+.moment .cap{margin:32px auto 0;max-width:36ch;font-size:clamp(17px,2vw,21px);line-height:1.6;color:#b9b3c2}
+.moment .fine{margin-top:22px;font-size:13px;color:#6d6878}
+
+.story blockquote{margin:52px 0;padding-left:30px;border-left:2px solid var(--accent);
+  font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,3.2vw,34px);line-height:1.32;color:var(--ink);letter-spacing:-.014em}
+.story .sig{margin-top:44px;display:flex;align-items:center;gap:16px;font-size:14px;color:var(--mute)}
+.story .sig .ln{flex:1;height:1px;background:var(--line)}
+
+/* domains grid: wide capability, no mechanism */
+.dom{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;border-top:1px solid var(--line)}
+@media(max-width:900px){.dom{grid-template-columns:1fr}}
+.d{padding:36px 34px 36px 0;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.d:nth-child(3n){border-right:none;padding-right:0}
+@media(max-width:900px){.d{border-right:none;padding-right:0}}
+.d .n{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--accent);letter-spacing:.08em}
+.d h3{margin-top:14px;font-size:20.5px;font-weight:600;letter-spacing:-.018em;line-height:1.25}
+.d p{margin-top:10px;color:var(--mute);font-size:15px;line-height:1.62}
+
+.split{display:grid;grid-template-columns:1fr 340px;gap:80px;align-items:center}
+@media(max-width:980px){.split{grid-template-columns:1fr;gap:48px}}
+.phone{border:1px solid var(--line);border-radius:28px;padding:10px;background:#fff;box-shadow:0 40px 80px -34px rgba(22,21,26,.35)}
+.scr{border-radius:20px;background:var(--paper-2);padding:16px 14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px}
+.card .from{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.card .txt{margin-top:10px;font-size:12.8px;line-height:1.55;color:var(--ink-2)}
+.card .dft{margin-top:13px;padding:13px;border-radius:9px;background:rgba(67,56,202,.055);border:1px solid rgba(67,56,202,.14);
+  font-size:12.5px;line-height:1.55;color:var(--ink-2)}
+.acts3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:13px}
+.a3{text-align:center;padding:10px 2px;border-radius:8px;font-size:11px;font-weight:600;border:1px solid var(--line);color:var(--mute)}
+.a3.on{background:#eef8f1;border-color:#b3e0c4;color:#1a7a48}
+.pts{margin-top:36px;list-style:none}
+.pts li{padding:18px 0;border-top:1px solid var(--line);font-size:16.5px;color:var(--ink-2);line-height:1.6}
+.pts li b{color:var(--ink);font-weight:600}
+
+/* outcomes */
+.out{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.olist{margin-top:56px;columns:2;column-gap:64px}
+@media(max-width:860px){.olist{columns:1}}
+.olist div{break-inside:avoid;padding:20px 0;border-top:1px solid var(--line);font-size:17px;color:var(--ink-2);line-height:1.55}
+.olist div b{color:var(--ink);font-weight:600;display:block;margin-bottom:4px}
+
+/* entry */
+.entry{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start}
+@media(max-width:940px){.entry{grid-template-columns:1fr;gap:44px}}
+.paths{list-style:none;border-top:1px solid var(--line)}
+.paths li{padding:26px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:20px;align-items:baseline}
+.paths h4{font-size:19px;font-weight:600;letter-spacing:-.015em}
+.paths p{margin-top:6px;color:var(--mute);font-size:15px;line-height:1.6;max-width:46ch}
+.paths .go{font-size:14px;color:var(--accent);font-weight:500;white-space:nowrap}
+
+
+/* how I solve it */
+.method{border-top:1px solid var(--line)}
+.mrow{display:grid;grid-template-columns:120px 1fr;gap:40px;padding:44px 0;border-bottom:1px solid var(--line);align-items:start}
+@media(max-width:820px){.mrow{grid-template-columns:1fr;gap:14px;padding:34px 0}}
+.mrow .lab{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);padding-top:8px}
+.mrow h3{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,3vw,32px);line-height:1.22;letter-spacing:-.018em;max-width:24ch}
+.mrow p{margin-top:14px;color:var(--ink-2);font-size:16.5px;line-height:1.7;max-width:62ch}
+
+/* problems solved */
+.probs{margin-top:58px;border-top:1px solid var(--line)}
+.prob{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:32px 0;border-bottom:1px solid var(--line);align-items:baseline}
+@media(max-width:860px){.prob{grid-template-columns:1fr;gap:12px;padding:26px 0}}
+.prob .said{font-family:'Instrument Serif',Georgia,serif;font-size:21px;line-height:1.4;color:var(--ink);font-style:italic}
+.prob .now{color:var(--mute);font-size:15.5px;line-height:1.62}
+.prob .now b{color:var(--ink);font-weight:600}
+.close{text-align:center;padding:150px 0}
+.close h2{margin:0 auto;max-width:17ch}
+.close .copy{margin:26px auto 0;text-align:center}
+.close .acts{justify-content:center}
+footer{border-top:1px solid var(--line);padding:52px 0;font-size:13px;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer a:hover{color:var(--ink)}
+</style>
+<style>
+.hero-a{padding:104px 0 80px}
+.figs{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+@media(max-width:860px){.figs{grid-template-columns:repeat(2,1fr)}}
+.fig{padding:34px 28px 34px 0;border-right:1px solid var(--line)}
+.fig:last-child{border-right:none}
+@media(max-width:860px){.fig:nth-child(2n){border-right:none}}
+.fig .v{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,4.6vw,54px);line-height:1;letter-spacing:-.03em}
+.fig .k{margin-top:12px;font-size:13.5px;color:var(--mute);line-height:1.5}
+.deliv{margin-top:56px;border-top:1px solid var(--line)}
+.dv{display:grid;grid-template-columns:52px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.dv .n{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent)}
+.dv h3{font-size:19.5px;font-weight:600;letter-spacing:-.015em}
+.dv p{margin-top:7px;color:var(--mute);font-size:15.5px;line-height:1.62;max-width:62ch}
+.safe{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.safe .wrap{padding-top:76px;padding-bottom:76px}
+.safelist{margin-top:34px;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+@media(max-width:860px){.safelist{grid-template-columns:1fr}}
+.safelist li{padding:16px 0;border-top:1px solid var(--line);font-size:16px;color:var(--ink-2);line-height:1.55}
+.safelist li b{color:var(--ink);font-weight:600}
+.buy{border:1px solid var(--line);border-radius:20px;background:#fff;padding:44px;margin-top:58px;
+  box-shadow:0 30px 70px -40px rgba(22,21,26,.3)}
+.buy .p{font-family:'Instrument Serif',Georgia,serif;font-size:52px;letter-spacing:-.03em;line-height:1}
+.buy .p span{font-family:Inter,sans-serif;font-size:14px;color:var(--mute);letter-spacing:0}
+.buy ul{list-style:none;margin:26px 0}
+.buy li{padding:11px 0 11px 24px;position:relative;color:var(--ink-2);font-size:15.5px;border-top:1px solid var(--line)}
+.buy li:before{content:"→";position:absolute;left:0;color:var(--accent);font-size:13px}
+.faq{margin-top:56px;border-top:1px solid var(--line)}
+.q{padding:26px 0;border-bottom:1px solid var(--line)}
+.q h4{font-size:17.5px;font-weight:600;letter-spacing:-.012em}
+.q p{margin-top:9px;color:var(--mute);font-size:15.5px;line-height:1.65;max-width:70ch}
+.back{font-size:13.5px;color:var(--mute)}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="mk"></span> Agents for Agents</a>
+    <div class="nl">
+      <a href="/">Home</a>
+      <a href="#how">How it works</a>
+      <a class="cta-sm" href="#get">Get the audit</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<header class="hero hero-a">
+  <div class="wrap">
+    <div class="eyebrow rv">The database audit</div>
+    <h1 class="display serif rv">There is commission in your CRM right now. <em>You just cannot see it.</em></h1>
+    <p class="lede rv">I run a read only audit of your database and send you the report. What has gone quiet, who was never called, what you promised and never delivered, and the ten people worth calling this week. Nothing in your CRM is changed. Nothing is deleted. Nothing is sent to anyone.</p>
+    <div class="acts rv">
+      <a class="btn btn-fill" href="#get">Audit my database</a>
+      <a class="btn btn-line" href="#how">See what you get</a>
+    </div>
+    <div class="hero-note rv">Read only. Delivered in 48 hours. $197.</div>
+  </div>
+</header>
+
+<section class="moment">
+  <div class="narrow">
+    <div class="big rv">$222,000</div>
+    <p class="cap rv">What the first audit found. It was my own database, and I did not enjoy reading it.</p>
+    <p class="fine rv">Estimate, not a promise. 370 contacts gone quiet past ninety days, at a 2 percent reactivation rate and a $30,000 average commission. Your assumptions may differ, and the report shows the math either way.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="tag rv">The first audit I ever ran</div>
+    <h2 class="display serif rv">I built this to look at my own book. <em>Then I could not unsee it.</em></h2>
+    <p class="copy rv">These are the real numbers from my database the first time I ran it. I am not showing you a case study from a client. I am showing you mine, because it is the only one I am allowed to be completely honest about.</p>
+
+    <div class="figs">
+      <div class="fig rv"><div class="v">1,314</div><div class="k">Contacts in the database</div></div>
+      <div class="fig rv"><div class="v">370</div><div class="k">Silent for more than ninety days</div></div>
+      <div class="fig rv"><div class="v">909</div><div class="k">Never called once, by anyone</div></div>
+      <div class="fig rv"><div class="v">$222k</div><div class="k">Estimated commission unworked</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="tag rv">What lands in your inbox</div>
+    <h2 class="display serif rv">A report you can act on <em>Monday morning.</em></h2>
+    <p class="copy rv">Not a dashboard you have to learn. Not a login. A written report, built for your database, that ends with a call list.</p>
+
+    <div class="deliv">
+      <div class="dv rv"><span class="n">01</span><div><h3>The decay curve</h3><p>How many of your contactable people have gone quiet at thirty days, sixty, and ninety. This is the number most agents guess wrong by a factor of three.</p></div></div>
+      <div class="dv rv"><span class="n">02</span><div><h3>The never contacted</h3><p>People with a phone number sitting in your CRM who have never received a single call. Usually the most uncomfortable page in the report.</p></div></div>
+      <div class="dv rv"><span class="n">03</span><div><h3>Promises you never kept</h3><p>I read your own notes back and surface the commitments in them that show no sign of ever being delivered. Nothing reopens a door faster than keeping a late promise.</p></div></div>
+      <div class="dv rv"><span class="n">04</span><div><h3>The ten worth reviving</h3><p>Ranked, with the reason each one made the list and a specific recommended next move for every name. This is the part people actually use.</p></div></div>
+      <div class="dv rv"><span class="n">05</span><div><h3>The dollar estimate</h3><p>What the quiet portion of your database is plausibly worth, with every assumption shown so you can argue with it and adjust it.</p></div></div>
+      <div class="dv rv"><span class="n">06</span><div><h3>Where it broke</h3><p>The patterns underneath the numbers. Which lead sources you abandon fastest, where in the process people fall out, and what to fix so it stops happening.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="safe">
+  <div class="wrap">
+    <div class="tag rv">Before you ask</div>
+    <h2 class="display serif rv">It reads. <em>It never writes.</em></h2>
+    <p class="copy rv">You are handing someone visibility into your business, so here is exactly what does and does not happen. I would want this in writing too.</p>
+    <ul class="safelist">
+      <li class="rv"><b>Nothing is changed.</b> No stages moved, no notes added, no records edited</li>
+      <li class="rv"><b>Nothing is deleted.</b> Not a contact, not a note, not a task</li>
+      <li class="rv"><b>Nothing is sent.</b> No client of yours is contacted at any point</li>
+      <li class="rv"><b>Nothing is kept.</b> Your data comes off my machine when the report ships</li>
+      <li class="rv"><b>Nothing is shared.</b> Not with a partner, not in a case study, not without you</li>
+      <li class="rv"><b>You can revoke access</b> the moment the report is delivered</li>
+    </ul>
+  </div>
+</section>
+
+<section id="get">
+  <div class="wrap">
+    <div class="tag rv">Get the audit</div>
+    <h2 class="display serif rv">Find out what is actually <em>in there.</em></h2>
+
+    <div class="buy rv">
+      <div class="p">$197 <span>one time</span></div>
+      <ul>
+        <li>The complete written report on your database</li>
+        <li>The ten leads worth reviving, with a specific next move for each</li>
+        <li>The dollar estimate, with every assumption shown</li>
+        <li>Read only access, revoked the moment it ships</li>
+        <li>Delivered within 48 hours</li>
+      </ul>
+      <a class="btn btn-fill" href="#" data-payhip="pipeline-autopsy">Audit my database</a>
+    </div>
+
+    <div class="faq">
+      <div class="q rv"><h4>Which CRMs does this work with?</h4><p>Most of the ones agents actually use. If yours can produce an export, I can read it. Tell me what you are on before you buy and I will confirm.</p></div>
+      <div class="q rv"><h4>Do I have to give you my login?</h4><p>No. An export works. If you would rather give read only access to save yourself the step, that is your call, and it gets revoked the moment the report is delivered.</p></div>
+      <div class="q rv"><h4>Is the dollar figure a guarantee?</h4><p>No, and anyone telling you otherwise is selling something. It is an expected value estimate for prioritizing your week, and every assumption behind it is printed in the report so you can change them.</p></div>
+      <div class="q rv"><h4>What if my database is a mess?</h4><p>They all are. That is the point. A messy database produces a more useful report, not a less useful one.</p></div>
+      <div class="q rv"><h4>What if it does not find anything?</h4><p>Then you have paid a small amount for genuine peace of mind about the biggest asset in your business, and you can stop wondering. It has not happened yet.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="narrow">
+    <h2 class="display serif rv">Most agents are one honest look away from <em>a better quarter.</em></h2>
+    <p class="copy rv">The names are already yours. They already raised their hand once. Somebody is going to call them.</p>
+    <div class="acts rv"><a class="btn btn-fill" href="#" data-payhip="pipeline-autopsy">Audit my database</a></div>
+    <p class="back rv" style="margin-top:34px"><a href="/">← Back to everything else</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 Agents for Agents. Built in Massachusetts by a working agent.</div>
+    <div><a href="https://instagram.com/henryhandleshomes">Instagram</a> &nbsp; · &nbsp; <a href="mailto:henry@serhant.com">Email</a></div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((es) => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { rootMargin: '0px 0px -8% 0px', threshold: .12 });
+document.querySelectorAll('.rv').forEach((el, i) => {
+  el.style.transitionDelay = Math.min(i % 6, 5) * 55 + 'ms';
+  io.observe(el);
+});
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 12), { passive: true });
+</script>
+</body>
+</html>
