@@ -189,3 +189,42 @@ footer a:hover{color:var(--ink)}
 /* headline to copy spacing, applies on every page */
 h2.display + .copy{margin-top:26px}
 h2.display + .copy p:first-child{margin-top:0}
+
+/* ---- offer cards: paid products must never read as a text link ---- */
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
+@media(max-width:940px){.offers{grid-template-columns:1fr}}
+.offer{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 28px 28px;
+  display:flex;flex-direction:column;transition:.22s cubic-bezier(.2,.7,.3,1);
+  box-shadow:0 2px 4px rgba(22,21,26,.03)}
+.offer:hover{transform:translateY(-3px);box-shadow:0 26px 54px -26px rgba(22,21,26,.28);border-color:#d8d1c5}
+.offer:before{content:"";position:absolute;top:0;left:28px;right:28px;height:3px;border-radius:0 0 3px 3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.offer .kind{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.offer h3{font-family:'Instrument Serif',Georgia,serif;font-size:29px;line-height:1.12;letter-spacing:-.02em;margin-top:14px}
+.offer .amt{margin-top:14px;font-size:15px;font-weight:600;color:var(--accent)}
+.offer .amt s{color:var(--mute);font-weight:400;margin-right:8px}
+.offer p{margin-top:12px;color:var(--mute);font-size:15px;line-height:1.62}
+.offer ul{list-style:none;margin-top:16px;font-size:14.2px}
+.offer li{padding:8px 0 8px 20px;position:relative;color:var(--ink-2);border-top:1px solid var(--line)}
+.offer li:before{content:"";position:absolute;left:2px;top:16px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.offer .cta{margin-top:auto;padding-top:24px}
+.offer .cta .btn{width:100%;justify-content:center;padding:14px 22px;font-size:15px}
+.offer.free:before{background:var(--line)}
+.offer.free .amt{color:var(--mute)}
+.offer.hot{border-color:rgba(67,56,202,.34);box-shadow:0 20px 50px -24px rgba(67,56,202,.3)}
+
+/* the wide inline version, for promoting one product mid page */
+.offer-wide{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:38px 40px;margin-top:48px;
+  display:grid;grid-template-columns:1fr auto;gap:44px;align-items:center;
+  box-shadow:0 22px 54px -30px rgba(22,21,26,.26)}
+@media(max-width:860px){.offer-wide{grid-template-columns:1fr;gap:26px;padding:30px 26px}}
+.offer-wide:before{content:"";position:absolute;top:0;left:40px;right:40px;height:3px;border-radius:0 0 3px 3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.offer-wide .kind{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.offer-wide h3{font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1.12;letter-spacing:-.02em;margin-top:12px;max-width:22ch}
+.offer-wide p{margin-top:12px;color:var(--mute);font-size:16px;line-height:1.62;max-width:62ch}
+.offer-wide .side{text-align:right}
+@media(max-width:860px){.offer-wide .side{text-align:left}}
+.offer-wide .amt{font-family:'Instrument Serif',Georgia,serif;font-size:42px;letter-spacing:-.03em;line-height:1}
+.offer-wide .amt span{font-family:Inter,sans-serif;font-size:13px;color:var(--mute);letter-spacing:0;display:block;margin-top:6px}
+.offer-wide .btn{margin-top:18px}

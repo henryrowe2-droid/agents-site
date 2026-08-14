@@ -20,6 +20,7 @@
     <div class="nl">
       <a href="/">Home</a>
       <a href="#steps">The steps</a>
+      <a href="#library">Prompt library</a>
       <a href="#cautions">Cautions</a>
       <a class="cta-sm" href="#steps">Start setup</a>
     </div>
@@ -198,6 +199,151 @@
   </div>
 </section>
 
+<section id="library" class="out">
+  <div class="wrap">
+    <div class="tag rv">The ultimate MLS prompt library</div>
+    <h2 class="display serif rv">Eighteen prompts I actually run. <em>Take all of them.</em></h2>
+    <p class="copy rv">These are written the way you would say them out loud, because that is how the panel wants to be talked to. The bracketed parts are yours to fill in with your towns, your bands and your windows, and that is the only editing they need. Every one of them is written to be run on a screen that is already showing the right search, and every one of them has a line underneath telling you what to check in the output before you use it. That check line is the important half. A prompt is easy. Knowing when the answer is wrong is the job.</p>
+
+    <div class="method">
+
+      <div class="mrow rv">
+        <div class="lab">Group A</div>
+        <div>
+          <h3>Market reports out of expired listings.</h3>
+          <p>Expireds are the cheapest market intelligence in your business and almost nobody reads them as data. Start with the pull, then ask the same set the harder questions.</p>
+          <div class="probs">
+            <div class="prob">
+              <div class="said">"Pull every listing in [town] and [town] that expired between [date] and [date], single family, [price floor] to [price ceiling], and give me address, original list price, final list price, days on market, number of price changes and expiration date, sorted by days on market descending, with a count at the top."</div>
+              <div class="now"><b>Check the status and the date field.</b> Expired is not withdrawn and it is not cancelled, and the window has to be running against the expiration date, not the list date.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Looking only at the listings in that result, tell me what the ones that failed have in common, grouped by price change behavior, days on market, and original list price against final list price."</div>
+              <div class="now"><b>Make it name the addresses behind every pattern.</b> If it cannot point at the specific rows that support a claim, the claim came from somewhere other than your screen.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Break those expireds into price bands of [50,000] and tell me how many expired in each band, with average days on market and average total reduction from original list price in each band."</div>
+              <div class="now"><b>Add the bands up.</b> They have to equal the count at the top of the pull. If they do not, listings were dropped somewhere between the search and the summary.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Now run the same window, same towns, same property type and same bands for sold listings, then compare the expired count to the sold count in each band and give me the share that expired in each one."</div>
+              <div class="now"><b>That is a second search, so verify it separately.</b> A ratio built on one trusted count and one unchecked count is not a ratio you can say to a seller.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Across the last [twelve] months in these towns, tell me which price points are failing consistently rather than just in this one window, and say plainly where the evidence is thin."</div>
+              <div class="now"><b>Confirm the window really covers twelve months.</b> Long ranges often stop at whatever the screen actually loaded, and the answer will not volunteer that it only read two hundred rows.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mrow rv">
+        <div class="lab">Group B</div>
+        <div>
+          <h3>How fast the market is actually moving.</h3>
+          <p>Everyone quotes days on market. Very few agents can say what separates the homes that go in a week from the ones that sit, in their own town, with numbers behind it.</p>
+          <div class="probs">
+            <div class="prob">
+              <div class="said">"Show me everything in [town] that sold in under seven days on market in the last [ninety] days, with address, list price, sold price, days on market, beds and property type, sorted by sold date, with a count at the top."</div>
+              <div class="now"><b>Ask which days on market field it used.</b> Many systems carry both a current and a cumulative version and they tell different stories about the same house.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Using only those fast sales, tell me what they had in common in price, property type, bed count, and where each one sat against the median sold price for the town in the same period."</div>
+              <div class="now"><b>Any median it references has to be stated as a number.</b> If it will not show you the median it is comparing against, you cannot repeat the comparison.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Give me the sold price to final list price ratio by price band for the last [ninety] days in [town], with the number of sales in each band next to it."</div>
+              <div class="now"><b>Say which list price you meant.</b> Against the original list price the number looks very different, and that difference is the whole conversation with a seller.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Show me median days on market by neighborhood and by price band for the last [six] months in [town], and flag any band with fewer than [ten] sales as too thin to read."</div>
+              <div class="now"><b>Watch the small samples.</b> It will happily report a median built on two sales unless you tell it not to, and you will quote it in a listing appointment.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Compare the homes that sold in under seven days against the ones that sat over ninety days in the same town and price range, and tell me only the differences that are visible in this data."</div>
+              <div class="now"><b>It should admit what it cannot see.</b> Condition, photography and staging are not in the fields on your screen. If the answer explains them anyway, it is filling in gaps.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mrow rv">
+        <div class="lab">Group C</div>
+        <div>
+          <h3>Analysis you can put in front of a client.</h3>
+          <p>This is the group that earns its keep. The data is on the screen already. What you need is the sentence that makes it land at a kitchen table.</p>
+          <div class="probs">
+            <div class="prob">
+              <div class="said">"Take the comparables on this screen and write a plain English explanation for a seller of what this set actually says about their price, including the range, where the comps disagree with each other, and what would have to be true about their home to sit at the top of that range."</div>
+              <div class="now"><b>Every number in the write up has to appear on screen.</b> Read the paragraph with the comp sheet next to you before it goes anywhere near the seller.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Using the active and pending inventory on this screen for [town] between [price] and [price], tell me where a buyer has negotiating room right now and what the evidence is for each one, listing by listing."</div>
+              <div class="now"><b>Confirm it kept pending separate from sold.</b> Pending is not a closed number, and advising a buyer off pendings as if they were sales is how you lose the negotiation.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Calculate months of inventory for [town], [property type], [price band] using the last [six] months of closed sales and the current active count, then explain what that means in one paragraph a client would understand without using the term absorption."</div>
+              <div class="now"><b>Both counts have to be right or the whole figure is.</b> Verify the active count against your own search before you say the number out loud.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Look at the price reductions in [town] over the last [sixty] days, then tell me what that pattern means specifically for a seller at [price] who has been on market [x] days."</div>
+              <div class="now"><b>It stays on property, price and market behavior.</b> If the answer starts characterizing who is buying or who lives in an area, discard it and rewrite the request.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mrow rv">
+        <div class="lab">Group D</div>
+        <div>
+          <h3>Turning the same pull into content.</h3>
+          <p>You already did the work to get the data. Getting a newsletter and a week of posts out of it costs about ten more minutes, and it is the same ten minutes every month.</p>
+          <div class="probs">
+            <div class="prob">
+              <div class="said">"Write a monthly market report for my newsletter from the numbers on this screen for [town] in [month], covering sales volume, median sold price, days on market and current inventory, in about [300] words, no jargon and no adjectives the data does not support."</div>
+              <div class="now"><b>Check every figure, then state the source and date range inside the piece.</b> A market report without a stated window is a number nobody can check, including you.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Find the one statistic in this data that would genuinely surprise a homeowner in [town], then write a LinkedIn post around it in my voice, leading with the number and ending with a question."</div>
+              <div class="now"><b>The surprising number is the one most likely to be wrong.</b> Re-run the search that produced it before you post it, every time.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Turn this expired and price reduction data into three talking points I can use at a listing appointment in [town], each one written as a sentence I would actually say out loud."</div>
+              <div class="now"><b>No promise about outcome, timeline or price.</b> Talking points describe what the market has already done. They do not predict what it will do next.</div>
+            </div>
+            <div class="prob">
+              <div class="said">"Write a sixty second video script from this one trend, opening with the number, then one line on what is driving it, one line on what it means for someone thinking about selling this year, and a close that is not a hard sell."</div>
+              <div class="now"><b>Read it out loud with the data in front of you.</b> Any line you could not defend on camera to another agent comes out of the script.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 class="display serif rv" style="margin-top:96px">Four rules that keep this <em>honest.</em></h2>
+    <ul class="safelist">
+      <li class="rv"><b>Claude reads what is on the screen, so the pull has to be correct before the analysis can be.</b> Good writing on top of the wrong list is still the wrong answer, delivered confidently</li>
+      <li class="rv"><b>Verify counts against a search you already trust.</b> The count at the top is the fastest error check you have, and it takes about four seconds to compare</li>
+      <li class="rv"><b>Never publish a market statistic you have not personally sanity checked.</b> Your name and your license are on the number in the newsletter, not the software's</li>
+      <li class="rv"><b>Fair housing applies to analysis and content exactly as it applies to advertising.</b> Everything here describes property, price and market behavior, never the people who live somewhere</li>
+    </ul>
+
+    <div class="offer-wide rv">
+      <div>
+        <div class="kind">The step up · Expired system</div>
+        <h3>The call sheet is already there when you wake up.</h3>
+        <p>Everything above is the manual version. Your browser, your login, run by you, and it is genuinely useful. It is also the basic tier. The step up is a system that does the same job every single morning without anyone opening a browser: it pulls the expireds, matches the owners, appends contact information, ranks the list so you know who is worth calling first, and has a finished call sheet waiting before you are awake. That is what has run in my own business every morning since April. I am not going to tell you what it is built on. It gets set up with you directly, because every market and every MLS is different and a template would break in half of them, which is also why I can only take a small number of these at a time. It starts with a conversation, not a checkout.</p>
+      </div>
+      <div class="side">
+        <div class="amt">$5,000<span>Where engagements start. Scope decides the rest.</span></div>
+        <a class="btn btn-fill" href="mailto:henry@serhant.com?subject=Expired%20system%20setup">Email me about it</a>
+        <p><a href="/build">Or read the done for you tier first →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="safe" id="cautions">
   <div class="wrap">
     <div class="tag rv">Read this part twice</div>
@@ -240,16 +386,50 @@
       </div>
     </div>
 
-    <div class="entry" style="margin-top:56px">
-      <div>
-        <h2 class="display serif rv">Keep going, or <em>skip the building.</em></h2>
-        <p class="copy rv">You can build all of it yourself, one piece at a time, the same way you just built this pull. Most agents start that way and a few finish. The alternative is having all of it by this afternoon.</p>
+    <div style="margin-top:88px">
+      <h2 class="display serif rv">Keep going, or <em>skip the building.</em></h2>
+      <p class="copy rv">You can build all of it yourself, one piece at a time, the same way you just built this pull. Most agents start that way and a few finish. The alternative is having all of it by this afternoon.</p>
+
+      <div class="offers">
+        <div class="offer hot rv">
+          <div class="kind">Toolkit</div>
+          <h3>The Vault</h3>
+          <div class="amt">$397 once</div>
+          <p>Thirteen packs and 263 skills, the saved jobs behind the ranking, the openers and the follow up that this page stops short of.</p>
+          <ul>
+            <li>263 skills across thirteen parts of the business</li>
+            <li>Includes the ones that rank an expired list and write a first line for every name on it</li>
+            <li>Installs in about ten minutes, inside your own Claude account</li>
+          </ul>
+          <div class="cta"><a class="btn btn-fill" href="/packs">See what is in it</a></div>
+        </div>
+
+        <div class="offer free rv">
+          <div class="kind">Free guide</div>
+          <h3>Voice Setup</h3>
+          <div class="amt">Free</div>
+          <p>Ten minutes to teach Claude how you actually write, so nothing that leaves your desk reads like it came from a machine.</p>
+          <ul>
+            <li>Nothing gated, no email, same as this page</li>
+            <li>Do it before you buy anything else here</li>
+            <li>Every prompt above comes back sounding like you</li>
+          </ul>
+          <div class="cta"><a class="btn btn-line" href="/voice">Read it free</a></div>
+        </div>
+
+        <div class="offer rv">
+          <div class="kind">Done for you</div>
+          <h3>The Database Audit</h3>
+          <div class="amt">$197</div>
+          <p>A read only look at the database you already pay for, before you go spend a morning finding new names.</p>
+          <ul>
+            <li>Read only. Nothing is sent, nothing is changed, nothing is deleted</li>
+            <li>Shows what is sitting unworked and exactly where</li>
+            <li>One audit of 1,314 contacts found 370 dark past ninety days and 909 never called</li>
+          </ul>
+          <div class="cta"><a class="btn btn-fill" href="/audit">Have me look</a></div>
+        </div>
       </div>
-      <ul class="paths">
-        <li class="rv"><div><h4>The Vault</h4><p>Thirteen packs, 263 skills, including the ones that rank a list and write the first line for every name on it. Installs in ten minutes.</p></div><span class="go"><a href="/packs">See what is in it →</a></span></li>
-        <li class="rv"><div><h4>Voice setup</h4><p>The other free one. Ten minutes to teach Claude how you actually write, so none of the outreach sounds like a machine.</p></div><span class="go"><a href="/voice">Read it free →</a></span></li>
-        <li class="rv"><div><h4>The database audit</h4><p>Before you go find new names, find out what is already sitting in your CRM unworked.</p></div><span class="go"><a href="/audit">Have me look →</a></span></li>
-      </ul>
     </div>
   </div>
 </section>
