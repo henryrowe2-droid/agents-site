@@ -71,6 +71,11 @@ Bands: `.strip` (thin fact row, must be a plain div, never a section), `.moment`
 Grids: `.dom` + `.d` (3 col capability tiles), `.figs` + `.fig` (4 stat columns), `.deliv` + `.dv` (numbered deliverable rows), `.index` + `.row` (numbered index with right margin meta), `.entry` + `.paths` (route list)
 Editorial: `.story` + `blockquote`, `.method` + `.mrow` (label + heading + paragraph rows), `.probs` + `.prob` (quote left, outcome right), `.olist` (two column outcome list)
 Commerce: `.buy` (bordered price card), `.faq` + `.q`, `.paths` (list of routes)
+Offers, in ascending loudness. **Never let a paid offer inherit body copy styling:**
+- `.ptag` / `.ptag.is-free`: price chip inside a `.paths h4`. Makes a route list read as a priced menu.
+- `.plug`: compact mid page cue. An `<a>` with `.pl` badge, `<b>` headline, `<span>` line, `.go` arrow. Use once inside a long free guide.
+- `.offers` + `.offer` (`.free`, `.hot`): the three card product grid. Ends most pages.
+- `.pitch`: the loudest. **Full bleed dark band, so it must sit OUTSIDE `<section>` and OUTSIDE `.wrap`**, as a direct child of `<main>`. Contains `.wrap` > left div (`.pk` kicker, `h3` with `<em>`, `p`, `ul.pwhat` chips) + `.pbuy` (`.amt` with `<small>`, `.btn.btn-fill`, `.alt` link). One per page, at the moment the reader is most convinced.
 Device: `.phone` > `.scr` > `.card` (approval card mock)
 Reveal: add class `rv` to anything that should fade up on scroll. Every meaningful block gets it.
 

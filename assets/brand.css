@@ -114,6 +114,11 @@ h2.display em{font-style:italic;color:var(--accent)}
 .paths h4{font-size:19px;font-weight:600;letter-spacing:-.015em}
 .paths p{margin-top:6px;color:var(--mute);font-size:15px;line-height:1.6;max-width:46ch}
 .paths .go{font-size:14px;color:var(--accent);font-weight:500;white-space:nowrap}
+/* price chip so a route list reads as a priced menu, not five identical rows */
+.paths h4{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.ptag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:500;padding:5px 10px;border-radius:6px;background:var(--accent);color:#fff;white-space:nowrap}
+.ptag.is-free{background:transparent;color:var(--mute);border:1px solid var(--line)}
 
 
 /* how I solve it */
@@ -228,3 +233,53 @@ h2.display + .copy p:first-child{margin-top:0}
 .offer-wide .amt{font-family:'Instrument Serif',Georgia,serif;font-size:42px;letter-spacing:-.03em;line-height:1}
 .offer-wide .amt span{font-family:Inter,sans-serif;font-size:13px;color:var(--mute);letter-spacing:0;display:block;margin-top:6px}
 .offer-wide .btn{margin-top:18px}
+
+/* ---- the pitch band: a paid offer must break the page, not continue it ----
+   Full bleed, inverted, on a cream site. A reader scrolling past body copy
+   cannot mistake this for another paragraph, which is the entire point. */
+.pitch{position:relative;background:var(--ink);color:var(--paper);padding:88px 0 84px;margin:104px 0;
+  overflow:hidden}
+.pitch:before{content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--warm))}
+.pitch:after{content:"";position:absolute;top:-30%;right:-8%;width:52%;height:160%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(124,92,255,.22),transparent 72%)}
+.pitch .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.35fr .9fr;gap:64px;align-items:center}
+@media(max-width:900px){.pitch{padding:60px 0 58px;margin:72px 0}.pitch .wrap{grid-template-columns:1fr;gap:38px}}
+.pitch .pk{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  padding:8px 15px;border-radius:100px;margin-bottom:26px}
+.pitch .pk:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-2);
+  box-shadow:0 0 0 4px rgba(124,92,255,.25)}
+.pitch h3{font-family:'Instrument Serif',Georgia,serif;font-weight:400;
+  font-size:clamp(34px,4.6vw,54px);line-height:1.06;letter-spacing:-.026em;max-width:19ch}
+.pitch h3 em{font-style:italic;color:#a996ff}
+.pitch p{margin-top:22px;font-size:17px;line-height:1.66;color:#b9b3c2;max-width:56ch}
+.pitch .pwhat{list-style:none;margin-top:26px;display:flex;flex-wrap:wrap;gap:9px}
+.pitch .pwhat li{font-size:13.5px;color:#ddd8e6;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:8px 15px}
+.pitch .pbuy{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.16);
+  border-radius:20px;padding:32px 30px;backdrop-filter:blur(6px)}
+.pitch .pbuy .amt{font-family:'Instrument Serif',Georgia,serif;font-size:58px;line-height:1;letter-spacing:-.035em;color:#fff}
+.pitch .pbuy .amt small{font-family:Inter,sans-serif;font-size:14px;letter-spacing:0;color:#a49eb0;display:block;margin-top:10px;line-height:1.5}
+.pitch .pbuy .btn{margin-top:24px;width:100%;justify-content:center;padding:16px 24px;font-size:15.5px}
+.pitch .pbuy .btn-fill{background:#fff;color:var(--ink)}
+.pitch .pbuy .btn-fill:hover{background:var(--accent-2);color:#fff}
+.pitch .pbuy .alt{display:block;margin-top:16px;font-size:13.5px;color:#a49eb0;text-align:center}
+.pitch .pbuy .alt:hover{color:#fff}
+.pitch.free:before{background:linear-gradient(90deg,#6d6878,#b9b3c2)}
+.pitch.free .pk:before{background:#b9b3c2;box-shadow:0 0 0 4px rgba(185,179,194,.2)}
+
+/* ---- the plug: a small mid page cue that this has a paid version ----
+   For breaking a long free guide without hijacking it. */
+.plug{position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;
+  background:linear-gradient(100deg,rgba(67,56,202,.07),rgba(124,92,255,.045));
+  border:1px solid rgba(67,56,202,.22);border-left:4px solid var(--accent);
+  border-radius:14px;padding:22px 26px;margin:56px 0;transition:.2s}
+.plug:hover{border-color:rgba(67,56,202,.45);transform:translateX(2px)}
+@media(max-width:760px){.plug{grid-template-columns:1fr;gap:12px;padding:20px 22px}}
+.plug .pl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:#fff;background:var(--accent);padding:7px 12px;border-radius:6px;white-space:nowrap;align-self:start}
+.plug b{display:block;font-size:16.5px;font-weight:600;letter-spacing:-.015em;line-height:1.35}
+.plug span{display:block;margin-top:5px;font-size:14.5px;color:var(--mute);line-height:1.55}
+.plug .go{font-size:14.5px;font-weight:600;color:var(--accent);white-space:nowrap}
