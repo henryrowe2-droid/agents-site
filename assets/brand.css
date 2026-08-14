@@ -303,6 +303,44 @@ h2.display + .copy p:first-child{margin-top:0}
 .pitch .pbuy .alt{display:block;margin-top:16px;font-size:13.5px;color:#a49eb0;text-align:center}
 .pitch .pbuy .alt:hover{color:#fff}
 .pitch.free:before{background:linear-gradient(90deg,#6d6878,#b9b3c2)}
+
+/* ---- pitch-xl: the flagship offer. Full width head, the artifact on show,
+   then the arithmetic. Used where the price has to be justified, not stated. ---- */
+.pitch-xl{padding:96px 0 88px}
+.pitch-xl .wrap{display:block}
+.pitch-xl .phead{max-width:74ch}
+.pitch-xl .phead h3{font-size:clamp(38px,5.4vw,64px);max-width:20ch}
+.pitch-xl .phead p{font-size:18px;max-width:64ch}
+.pgrid{margin-top:52px;display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:start}
+@media(max-width:960px){.pgrid{grid-template-columns:1fr;gap:36px}}
+
+/* the artifact: a call sheet mock. Shows the output, never the mechanism. */
+.psheet{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.14);border-radius:18px;
+  overflow:hidden;box-shadow:0 34px 70px -30px rgba(0,0,0,.7)}
+.psheet .sh-top{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:15px 20px;background:rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.12);
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:#c9c3d4}
+.psheet .sh-top b{color:#fff;font-weight:500}
+.psheet .dot{width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block;margin-right:9px;
+  box-shadow:0 0 0 4px rgba(74,222,128,.16)}
+.shrow{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:center;
+  padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.075)}
+.shrow:last-child{border-bottom:none}
+.shrow .rk2{font-family:'JetBrains Mono',monospace;font-size:12px;color:#a996ff}
+.shrow .ad{display:block;font-size:15px;color:#fff;font-weight:500;letter-spacing:-.01em}
+.shrow .sub{display:block;margin-top:4px;font-size:12.5px;color:#948fa3;line-height:1.45}
+.shrow .why{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:#ddd8e6;background:rgba(124,92,255,.2);border:1px solid rgba(124,92,255,.34);
+  padding:6px 11px;border-radius:100px;white-space:nowrap}
+.psheet .sh-foot{padding:14px 20px;font-size:12.5px;color:#8b8698;background:rgba(0,0,0,.22)}
+
+/* the arithmetic that makes the number feel small */
+.pmath{margin-top:56px;padding-top:44px;border-top:1px solid rgba(255,255,255,.14);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:38px}
+@media(max-width:860px){.pmath{grid-template-columns:1fr;gap:28px}}
+.pmath .f{font-family:'Instrument Serif',Georgia,serif;font-size:52px;line-height:1;letter-spacing:-.03em;color:#fff}
+.pmath .l{margin-top:12px;font-size:14.5px;line-height:1.6;color:#b9b3c2;max-width:34ch}
+
 .pitch.free .pk:before{background:#b9b3c2;box-shadow:0 0 0 4px rgba(185,179,194,.2)}
 
 /* ---- the plug: a small mid page cue that this has a paid version ----
