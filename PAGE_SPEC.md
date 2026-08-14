@@ -67,7 +67,7 @@ Layout: `.wrap` (1160 max), `.narrow` (760 max, for reading), `section` (120px v
 Type: `.serif`, `.mono`, `h1.display`, `h2.display`, `.eyebrow`, `.tag`, `.copy`, `.lede`
 Emphasis: wrap a phrase in `<em>` inside any `.display` heading to set it in italic accent violet
 Hero: `header.hero` > `.eyebrow`, `h1.display.serif`, `.lede`, `.acts` with `.btn.btn-fill` / `.btn.btn-line`, `.hero-note`
-Bands: `.strip` (thin fact row, must be a plain div, never a section), `.moment` (full bleed dark, `.big` `.cap` `.fine`), `.out` and `.safe` and `.inv` (tinted section wrappers)
+Bands: `.strip` (thin fact row, must be a plain div, never a section), `.moment` (full bleed dark, `.big` `.cap` `.fine`), `.out` and `.safe` (tinted section wrappers)
 Grids: `.dom` + `.d` (3 col capability tiles), `.figs` + `.fig` (4 stat columns), `.deliv` + `.dv` (numbered deliverable rows), `.index` + `.row` (numbered index with right margin meta), `.entry` + `.paths` (route list)
 Editorial: `.story` + `blockquote`, `.method` + `.mrow` (label + heading + paragraph rows), `.probs` + `.prob` (quote left, outcome right), `.olist` (two column outcome list)
 Commerce: `.buy` (bordered price card), `.faq` + `.q`, `.paths` (list of routes)
