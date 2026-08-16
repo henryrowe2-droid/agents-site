@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrape your own leads · Agents for Agents</title>
+<meta name="description" content="Connect Apify to Claude Desktop in six steps, then pull a clean list of real businesses in your market with names, numbers and a first line worth sending.">
+<meta property="og:title" content="Scrape your own leads">
+<meta property="og:description" content="Connect Apify to Claude Desktop in six steps, then pull a clean list of real businesses in your market with names, numbers and a first line worth sending.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/brand.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="mk"></span> Agents for Agents</a>
+    <div class="nl">
+      <a href="/">Home</a>
+      <a href="#steps">The setup</a>
+      <a href="#prompt">The prompt</a>
+      <a class="cta-sm" href="#engine">Get the pack</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<header class="hero hero-a">
+  <div class="wrap">
+    <div class="eyebrow rv">Free guide · No card, no email</div>
+    <h1 class="display serif rv">Scrape your own leads <em>with Claude</em>.</h1>
+    <p class="lede rv">Connect one tool to Claude on your desktop, once. Then ask it for the people who sit with your future client the week before they call an agent, and get back a list with real names, real numbers, and a first line worth sending.</p>
+    <div class="acts rv">
+      <a class="btn btn-fill" href="#steps">Start the setup</a>
+      <a class="btn btn-line" href="#prompt">Just give me the prompt</a>
+    </div>
+    <div class="hero-note rv">About fifteen minutes. Everything you need has a free tier.</div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div><b>6 steps</b> from nothing to a finished list</div>
+    <div><b>Five of them</b> you do once and never again</div>
+    <div><b>One prompt</b> you reuse for the rest of your career</div>
+    <div><b>Works for any business</b>, not only real estate</div>
+  </div>
+</div>
+
+<section>
+  <div class="narrow">
+    <div class="tag rv">What you are building</div>
+    <h2 class="display serif rv">A researcher that <em>never gets bored</em>.</h2>
+    <div class="copy">
+      <p class="rv">Every agent has the same list problem. You know exactly who refers business, the divorce attorney, the estate attorney, the CPA, the builder. You just never sit down and find all of them, because finding them is four hours of tabs and copying and it is never the most urgent thing on a Tuesday.</p>
+      <p class="rv">This removes that afternoon. You describe who you want, and Claude goes out, finds every one of them in your towns, reads their websites, and hands you a spreadsheet. Business name, a real person, the phone, the email, the rating, and one honest sentence on whether they are actually worth your time.</p>
+      <p class="rv">It runs on your own computer with your own accounts. <strong>Nobody is reselling you your own market.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="steps" class="out">
+  <div class="wrap">
+    <div class="tag rv">The setup</div>
+    <h2 class="display serif rv">Six steps, <em>start to finish</em>.</h2>
+
+    <div class="deliv">
+
+      <div class="dv rv">
+        <div class="n">01</div>
+        <div>
+          <h3>Install Claude on your desktop</h3>
+          <p>This is the desktop app, not the website. The browser version cannot hold connectors, and connectors are the entire point of what follows. Go to claude.ai/download, install it for Mac or Windows, and sign in with the account you already have. The free plan finishes this guide.</p>
+        </div>
+      </div>
+
+      <div class="dv rv">
+        <div class="n">02</div>
+        <div>
+          <h3>Create your Apify account</h3>
+          <p>Apify is the service that does the actual gathering. Claude is the brain, Apify is the hands. Go to apify.com, sign up, confirm your email, and stop there. You do not need to choose a plan or browse anything yet. Creating the account is free and comes with monthly usage credit.</p>
+        </div>
+      </div>
+
+      <div class="dv rv">
+        <div class="n">03</div>
+        <div>
+          <h3>Open Connectors inside Claude</h3>
+          <p>Connectors are how Claude reaches tools that live outside the chat window. In the desktop app, open Settings, then choose Connectors in the sidebar. That screen is where everything in the next step happens.</p>
+        </div>
+      </div>
+
+      <div class="dv rv">
+        <div class="n">04</div>
+        <div>
+          <h3>Find Apify and connect it</h3>
+          <p>Search the connector directory for Apify and add it. A browser window opens asking you to sign in to Apify and authorize Claude. Approve it and you are done. If Apify is not listed, choose Add custom connector instead and paste https://mcp.apify.com as the server URL. You will know it worked when Apify shows as connected on that same screen.</p>
+        </div>
+      </div>
+
+      <div class="dv rv">
+        <div class="n">05</div>
+        <div>
+          <h3>Link your API token, only if you were not asked to sign in</h3>
+          <p>Most people never touch this step, because the sign in window in step four handles it. Do this only if the connection failed. In Apify, open Settings, then API and Integrations. Your personal token is on that page. Copy it and paste it in when Claude asks. Treat that token exactly like a password: anyone holding it can spend from your account, so it never goes in a screenshot or a shared document.</p>
+        </div>
+      </div>
+
+      <div class="dv rv">
+        <div class="n">06</div>
+        <div>
+          <h3>Ask Claude for the list</h3>
+          <p>Start a new chat, paste the prompt below with your own details filled in, and watch it work rather than walking away. Claude will tell you which tool it plans to use before it runs anything. The first list takes a few minutes.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="prompt">
+  <div class="wrap">
+    <div class="tag rv">The prompt</div>
+    <h2 class="display serif rv">Fill in the orange. <em>Leave the rest alone.</em></h2>
+    <div class="copy">
+      <p class="rv">Everything in orange is yours to replace. Everything in white is doing a job. The last three lines are what separate a list you can call from a list you have to throw away, so resist the urge to trim them.</p>
+    </div>
+
+    <div class="prompt rv">
+      <div class="ptop">
+        <span>Paste into Claude Desktop</span>
+        <button class="pcopy" id="copyBtn" type="button">Copy prompt</button>
+      </div>
+<pre id="promptText">Use Apify. Find me <v>[WHO YOU ARE TARGETING]</v> in <v>[YOUR TOWNS]</v>.
+
+Scrape Google Maps, then crawl each business website.
+
+Give me a CSV: business name, contact name, title, phone, email,
+website, town, google rating, review count, one sentence on why
+they fit <v>[WHAT YOU SELL]</v>, and the actual opening line I would
+send them based on something real from their own site.
+
+Never invent a contact detail. Empty beats a guess.
+Score each 1 to 5 on <v>[WHAT MAKES A GOOD LEAD FOR YOU]</v>.
+
+Start with <v>[ONE CATEGORY]</v> only, 20 rows, so I can check the
+quality before we spend more.</pre>
+    </div>
+
+    <div class="olist" style="margin-top:52px">
+      <div class="rv"><b>[WHO YOU ARE TARGETING]</b>The professionals who sit with your client before you do. For an agent that is divorce and estate attorneys, CPAs, wealth managers and builders. For a contractor it is property managers and realtors. For an insurance producer it is CPAs and mortgage brokers.</div>
+      <div class="rv"><b>[YOUR TOWNS]</b>Name them individually rather than saying your county. Five real towns beats one vague region every time, because the search runs per town.</div>
+      <div class="rv"><b>[WHAT YOU SELL]</b>One plain sentence. Listing and selling homes in those towns. The trade you perform. The policies you write.</div>
+      <div class="rv"><b>[WHAT MAKES A GOOD LEAD FOR YOU]</b>Be specific about size. A firm small enough that one relationship moves real volume is worth more than a large one with an agent already locked in.</div>
+      <div class="rv"><b>[ONE CATEGORY]</b>Pick the single category you would most want to know. This is the twenty row test run before you spend on the other ten.</div>
+    </div>
+  </div>
+</section>
+
+<a class="plug" href="#engine">
+  <span class="pl">Goes further</span>
+  <span>
+    <b>Finding the names is the easy half.</b>
+    <span>The Lead Generation Engine is the other 22 skills: the capture page, the ad copy, the DM funnel, and the scoring that ranks all of it on a Monday.</span>
+  </span>
+  <span class="go">See it &rarr;</span>
+</a>
+
+<section class="safe">
+  <div class="wrap">
+    <div class="tag rv">Before you scale it up</div>
+    <h2 class="display serif rv">Four rules that keep the list <em>honest</em>.</h2>
+    <ul class="safelist">
+      <li class="rv"><b>Run one category first.</b> Twenty rows, one category, your real towns. Check them by hand before you spend on anything else.</li>
+      <li class="rv"><b>Empty beats a guess.</b> A blank email cell costs you nothing. A wrong one gets you marked as spam and burns the introduction permanently.</li>
+      <li class="rv"><b>Make it show its work.</b> Ask for the source page beside every claim. If it cannot tell you where a fact came from, the fact is not real.</li>
+      <li class="rv"><b>Watch the meter.</b> Runs consume Apify credit. Ask what a run will cost before approving it, and start small enough that a mistake is cheap.</li>
+    </ul>
+    <div class="copy">
+      <p class="rv">Those rules exist because I have audited a list built without them. Every rating in it was invented, and the invented numbers contradicted the real ones sitting two columns away in the same spreadsheet. <strong>A list you cannot trust is worse than no list</strong>, because you will call someone with a fact about their own business that is wrong.</p>
+      <p class="rv">One more, and it is the one people skip. These are businesses, not consumers, and the numbers are published. That does not put them outside Do Not Call rules or your brokerage policy. Check before you dial, keep an opt out on every email, and never buy your way around either.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="pitch" id="engine">
+  <div class="wrap">
+    <div>
+      <span class="pk">Lead Generation Engine</span>
+      <h3>You just built the list. <em>Now build the machine that works it.</em></h3>
+      <p>A spreadsheet of names is a starting line, not a pipeline. This pack is the rest of it: the guide worth trading an email for, the valuation page that actually converts, ad copy that passes housing review, the DM tree from comment to conversation, scripts for every sign call, and the scoring system that makes Monday morning start with a ranked list instead of a pile.</p>
+      <ul class="pwhat">
+        <li>22 skills</li>
+        <li>Lead magnets and capture pages</li>
+        <li>Fair housing safe ad copy</li>
+        <li>Instagram DM funnel</li>
+        <li>Sign call and referral scripts</li>
+        <li>Weekly ranked lead report</li>
+      </ul>
+    </div>
+    <div class="pbuy">
+      <div class="amt">$50<small>One pack, yours to keep. Works in the browser with nothing installed, or on your computer for the full version.</small></div>
+      <a class="btn btn-fill" href="/packs">Get the Engine</a>
+      <a class="alt" href="/packs">Or take all 13 packs, 263 skills, for $397 &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<section class="close">
+  <div class="wrap">
+    <h2 class="display serif rv">The list is free. <em>The follow through is the job.</em></h2>
+    <div class="copy rv"><p>Run the prompt tonight with one category and twenty rows. If what comes back is worth calling, you already know what the rest of the machine is worth.</p></div>
+    <div class="acts rv">
+      <a class="btn btn-fill" href="/packs">See every pack</a>
+      <a class="btn btn-line" href="/">Back to home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 Agents for Agents. Built in Massachusetts by a working agent.</div>
+    <div><a href="https://instagram.com/henryhandleshomes">Instagram</a> &nbsp; · &nbsp; <a href="mailto:henry@serhant.com">Email</a></div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((es) => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { rootMargin: '0px 0px -8% 0px', threshold: .12 });
+document.querySelectorAll('.rv').forEach((el, i) => {
+  el.style.transitionDelay = Math.min(i % 6, 5) * 55 + 'ms';
+  io.observe(el);
+});
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 12), { passive: true });
+
+const btn = document.getElementById('copyBtn');
+const pre = document.getElementById('promptText');
+btn.addEventListener('click', () => {
+  const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = 'Copy prompt', 1800); };
+  const fallback = () => {
+    const r = document.createRange(); r.selectNodeContents(pre);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    btn.textContent = 'Press Cmd C'; setTimeout(() => btn.textContent = 'Copy prompt', 2600);
+  };
+  if (navigator.clipboard) { navigator.clipboard.writeText(pre.innerText).then(done, fallback); }
+  else { fallback(); }
+});
+</script>
+</body>
+</html>

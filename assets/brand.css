@@ -356,3 +356,22 @@ h2.display + .copy p:first-child{margin-top:0}
 .plug b{display:block;font-size:16.5px;font-weight:600;letter-spacing:-.015em;line-height:1.35}
 .plug span{display:block;margin-top:5px;font-size:14.5px;color:var(--mute);line-height:1.55}
 .plug .go{font-size:14.5px;font-weight:600;color:var(--accent);white-space:nowrap}
+
+/* ---- .prompt: a copyable prompt specimen inside a free guide ----
+   Added 2026-08-15 for /apify. The guide pages had no way to show a block of text the reader is
+   meant to take away. Dark on the cream page so it reads as an object to lift, not as body copy.
+   <v> marks a bracket the reader replaces, painted warm so "fill this in" needs no instruction. */
+.prompt{margin-top:44px;background:var(--ink);border-radius:16px;overflow:hidden;
+  box-shadow:0 30px 66px -34px rgba(22,21,26,.5)}
+.prompt .ptop{display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:15px 22px;border-bottom:1px solid rgba(255,255,255,.11);
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:#948fa3}
+.prompt pre{margin:0;padding:26px 24px 28px;overflow-x:auto;color:#e6e2ee;
+  font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13.5px;line-height:1.78;white-space:pre}
+.prompt pre v{color:#e8a15c;font-weight:500;font-style:normal}
+.prompt .pcopy{font-family:Inter,sans-serif;font-size:12px;font-weight:600;letter-spacing:0;
+  text-transform:none;background:transparent;border:1px solid rgba(255,255,255,.22);color:#ddd8e6;
+  padding:7px 15px;border-radius:100px;cursor:pointer;transition:.18s}
+.prompt .pcopy:hover{background:#fff;color:var(--ink);border-color:#fff}
+@media(max-width:640px){.prompt pre{font-size:12px;padding:20px 18px 22px}}
