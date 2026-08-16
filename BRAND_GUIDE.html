@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Agents for Agents · Brand Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf8f5;--paper-2:#f2eee8;--ink:#16151a;--ink-2:#3d3a45;--mute:#78737f;
+    --line:#e4ded4;--accent:#4338ca;--accent-2:#7c5cff;--warm:#c2632f;
+  }
+  /* one plate = one PDF page. Without this the 2264px plate spills across two Letter pages. */
+  @page{size:1600px 2264px;margin:0}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:Inter,sans-serif;line-height:1.6;
+    -webkit-font-smoothing:antialiased}
+  .serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.012em}
+  .mono{font-family:'JetBrains Mono',monospace}
+
+  /* one page = one 1600x2264 plate, A4-ish ratio, renders clean to PDF */
+  .plate{width:1600px;height:2264px;padding:104px 112px;position:relative;
+    page-break-after:always;overflow:hidden;background:var(--paper)}
+  .plate.dark{background:var(--ink);color:var(--paper)}
+  .pnum{position:absolute;bottom:60px;right:112px;font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.16em;color:var(--mute)}
+  .prun{position:absolute;bottom:60px;left:112px;font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.16em;color:var(--mute)}
+  .tag{display:flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--mute);margin-bottom:34px}
+  .tag:before{content:"";width:30px;height:1px;background:var(--mute);opacity:.5}
+  h1{font-size:118px;line-height:.96;letter-spacing:-.03em;max-width:14ch}
+  h1 em{font-style:italic;color:var(--accent)}
+  h2{font-size:62px;line-height:1.04;letter-spacing:-.024em;max-width:20ch}
+  h2 em{font-style:italic;color:var(--accent)}
+  .lede{margin-top:34px;font-size:23px;line-height:1.6;color:var(--ink-2);max-width:52ch}
+  .plate.dark .lede{color:#b9b3c2}
+
+  .mk{width:64px;height:64px;border-radius:18px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));position:relative}
+  .mk:after{content:"";position:absolute;inset:16px;border-radius:7px;background:var(--paper)}
+  .mk.lg{width:180px;height:180px;border-radius:50px}
+  .mk.lg:after{inset:45px;border-radius:19px}
+
+  /* colour */
+  .sw{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;
+    border-top:1px solid var(--line)}
+  .sw>div{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:0 0 26px}
+  .sw>div:nth-child(3n){border-right:none}
+  .chip{height:150px;margin-bottom:22px;border:1px solid rgba(22,21,26,.08)}
+  .sw .nm{font-size:22px;font-weight:600;letter-spacing:-.015em}
+  .sw .vr{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute);
+    line-height:1.85;margin-top:10px}
+  .sw .use{margin-top:12px;font-size:15px;color:var(--ink-2);line-height:1.5;padding-right:26px}
+
+  /* type */
+  .face{border-top:1px solid var(--line);padding:44px 0}
+  .face .fh{display:flex;align-items:baseline;justify-content:space-between;gap:30px}
+  .face .fn{font-size:30px;font-weight:600;letter-spacing:-.018em}
+  .face .fr{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--accent)}
+  .face .spec{margin-top:26px}
+  .face .note{margin-top:18px;font-size:16px;color:var(--ink-2);max-width:64ch}
+  .scale{margin-top:52px;border-top:1px solid var(--line);width:100%;border-collapse:collapse}
+  .scale td{padding:15px 0;border-bottom:1px solid var(--line);vertical-align:baseline}
+  .scale td:first-child{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);width:190px}
+  .scale td:last-child{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute);
+    text-align:right;width:280px}
+  .scale .ex{font-size:19px;font-weight:500}
+
+  /* ladder */
+  .rungs{margin-top:52px;border-top:1px solid var(--line)}
+  .rg{display:grid;grid-template-columns:70px 250px 1fr;gap:34px;padding:26px 0;
+    border-bottom:1px solid var(--line);align-items:baseline}
+  .rg .lv{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--accent)}
+  .rg .cn{font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:500}
+  .rg .ds{font-size:17px;color:var(--ink-2);line-height:1.55}
+  .bar{height:10px;border-radius:5px;background:var(--accent);margin-top:12px}
+
+  /* rules */
+  .rules{margin-top:48px;border-top:1px solid var(--line)}
+  .rl{padding:26px 0;border-bottom:1px solid var(--line);display:grid;
+    grid-template-columns:56px 1fr;gap:28px;align-items:baseline}
+  .rl .x{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--warm)}
+  .rl b{font-size:22px;font-weight:600;letter-spacing:-.015em;display:block}
+  .rl span{display:block;margin-top:9px;font-size:17px;color:var(--ink-2);line-height:1.6;max-width:70ch}
+  .plate.dark .rl{border-color:rgba(255,255,255,.14)}
+  .plate.dark .rl span{color:#b9b3c2}
+  .plate.dark .rules{border-color:rgba(255,255,255,.14)}
+
+  .where{margin-top:52px;border-top:1px solid var(--line);width:100%;border-collapse:collapse}
+  .where td{padding:20px 0;border-bottom:1px solid var(--line);font-size:18px;vertical-align:top}
+  .where td:first-child{font-weight:600;width:330px}
+  .where td:last-child{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--ink-2)}
+</style>
+</head>
+<body>
+
+<!-- ── 01 cover ────────────────────────────────────────────────── -->
+<div class="plate">
+  <div class="mk lg"></div>
+  <h1 class="serif" style="margin-top:88px">Agents for Agents <em>brand guide</em></h1>
+  <p class="lede">The identity behind agents-for-agents.com. Colour, type, the mark, the offer
+  ladder, and the voice rules. Everything in this document is read from the live stylesheet, so
+  it describes what the site actually does rather than what it was once meant to do.</p>
+  <div style="position:absolute;left:112px;bottom:150px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.18em;
+      text-transform:uppercase;color:var(--mute)">Henry Rowe</div>
+    <div style="margin-top:10px;font-size:19px;color:var(--ink-2)">Practicing agent, not a coach</div>
+    <div style="margin-top:4px;font-size:19px;color:var(--ink-2)">Version 1 &nbsp;·&nbsp; August 2026</div>
+  </div>
+  <div class="prun">Agents for Agents · Brand guide</div>
+  <div class="pnum">01</div>
+</div>
+
+<!-- ── 02 colour ───────────────────────────────────────────────── -->
+<div class="plate">
+  <div class="tag">Colour</div>
+  <h2 class="serif">Cream ground, <em>one violet</em>, one warm.</h2>
+  <p class="lede">Nine values, and only three of them ever carry meaning. Paper and ink do the
+  work. Accent marks the one thing on a page you want clicked. Warm appears once or twice a page
+  at most, never as a second accent.</p>
+
+  <div class="sw">
+    <div><div class="chip" style="background:#faf8f5"></div>
+      <div class="nm">Paper</div>
+      <div class="vr">#faf8f5<br>rgb(250, 248, 245)<br>cmyk(0, 1, 2, 2)</div>
+      <div class="use">Page ground. Every page starts here.</div></div>
+    <div><div class="chip" style="background:#f2eee8"></div>
+      <div class="nm">Paper 2</div>
+      <div class="vr">#f2eee8<br>rgb(242, 238, 232)<br>cmyk(0, 2, 4, 5)</div>
+      <div class="use">Tinted band, to separate a section without a rule.</div></div>
+    <div><div class="chip" style="background:#16151a"></div>
+      <div class="nm">Ink</div>
+      <div class="vr">#16151a<br>rgb(22, 21, 26)<br>cmyk(15, 19, 0, 90)</div>
+      <div class="use">All body text. Also the ground of any inverted band.</div></div>
+    <div><div class="chip" style="background:#3d3a45"></div>
+      <div class="nm">Ink 2</div>
+      <div class="vr">#3d3a45<br>rgb(61, 58, 69)<br>cmyk(12, 16, 0, 73)</div>
+      <div class="use">Long form reading copy. Softer than ink, still fully legible.</div></div>
+    <div><div class="chip" style="background:#78737f"></div>
+      <div class="nm">Mute</div>
+      <div class="vr">#78737f<br>rgb(120, 115, 127)<br>cmyk(6, 9, 0, 50)</div>
+      <div class="use">Labels, captions, nav, anything secondary.</div></div>
+    <div><div class="chip" style="background:#e4ded4"></div>
+      <div class="nm">Line</div>
+      <div class="vr">#e4ded4<br>rgb(228, 222, 212)<br>cmyk(0, 3, 7, 11)</div>
+      <div class="use">Every hairline rule and card border on the site.</div></div>
+    <div><div class="chip" style="background:#4338ca"></div>
+      <div class="nm">Accent</div>
+      <div class="vr">#4338ca<br>rgb(67, 56, 202)<br>cmyk(67, 72, 0, 21)</div>
+      <div class="use">Italic emphasis in headings, links, the price, the buy button.</div></div>
+    <div><div class="chip" style="background:#7c5cff"></div>
+      <div class="nm">Accent 2</div>
+      <div class="vr">#7c5cff<br>rgb(124, 92, 255)<br>cmyk(51, 64, 0, 0)</div>
+      <div class="use">Only in a gradient with Accent, or as emphasis on ink ground.</div></div>
+    <div><div class="chip" style="background:#c2632f"></div>
+      <div class="nm">Warm</div>
+      <div class="vr">#c2632f<br>rgb(194, 99, 47)<br>cmyk(0, 49, 76, 24)</div>
+      <div class="use">Sparingly. Fill in tokens, a caution, the top edge of a pitch band.</div></div>
+  </div>
+  <div class="prun">Agents for Agents · Brand guide</div>
+  <div class="pnum">02</div>
+</div>
+
+<!-- ── 03 typography ───────────────────────────────────────────── -->
+<div class="plate">
+  <div class="tag">Typography</div>
+  <h2 class="serif">Three faces, <em>each with one job</em>.</h2>
+
+  <div class="face">
+    <div class="fh"><div class="fn">Instrument Serif</div><div class="fr">Display · 400 · roman and italic</div></div>
+    <div class="spec serif" style="font-size:76px;line-height:1;letter-spacing:-.028em">
+      Handling homes, <em style="font-style:italic;color:var(--accent)">not hype</em>.</div>
+    <div class="note">Every headline on the site. Never used below 24px and never for body copy.
+    The italic is the emphasis device: wrap a phrase in it and set it in Accent. One emphasis per
+    heading, never two.</div>
+  </div>
+
+  <div class="face">
+    <div class="fh"><div class="fn">Inter</div><div class="fr">Body · 400 500 600 700</div></div>
+    <div class="spec" style="font-size:23px;line-height:1.6;color:var(--ink-2);max-width:60ch">
+      A spreadsheet of names is a starting line, not a pipeline. Short sentences carry weight.
+      Long ones carry nuance. Alternate.</div>
+    <div class="note">All reading copy, buttons, navigation and labels. 400 for body, 600 for
+    anything that has to be found while scanning. 700 is rare.</div>
+  </div>
+
+  <div class="face">
+    <div class="fh"><div class="fn">JetBrains Mono</div><div class="fr">Utility · 400 500</div></div>
+    <div class="spec mono" style="font-size:19px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)">
+      Free guide · No card, no email</div>
+    <div class="note">Eyebrows, step numbers, price chips, kickers, and any block of text the
+    reader is meant to copy. Always uppercase with wide tracking when used as a label.</div>
+  </div>
+
+  <table class="scale">
+    <tr><td>h1.display</td><td class="ex serif" style="font-size:34px">Page headline</td><td>clamp(46px, 7.2vw, 92px)</td></tr>
+    <tr><td>h2.display</td><td class="ex serif" style="font-size:28px">Section headline</td><td>clamp(34px, 5vw, 60px)</td></tr>
+    <tr><td>.moment .big</td><td class="ex serif" style="font-size:32px">909</td><td>clamp(88px, 17vw, 220px)</td></tr>
+    <tr><td>.lede</td><td class="ex">Opening paragraph under a headline</td><td>clamp(18px, 2.1vw, 22px)</td></tr>
+    <tr><td>.copy</td><td class="ex">Body copy, 66ch maximum measure</td><td>18px / 1.78</td></tr>
+    <tr><td>.eyebrow / .tag</td><td class="ex mono" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase">Section label</td><td>11.5px · .2em · uppercase</td></tr>
+  </table>
+  <div class="prun">Agents for Agents · Brand guide</div>
+  <div class="pnum">03</div>
+</div>
+
+<!-- ── 04 the mark ─────────────────────────────────────────────── -->
+<div class="plate">
+  <div class="tag">The mark</div>
+  <h2 class="serif">A square with <em>the middle removed</em>.</h2>
+  <p class="lede">A rounded square filled with the Accent gradient, with a smaller rounded square
+  knocked out of the centre in whatever colour sits behind it. There is no wordmark file. The
+  mark always sits beside the words "Agents for Agents" set in Inter 600.</p>
+
+  <div style="display:flex;align-items:center;gap:70px;margin-top:70px">
+    <div class="mk lg"></div>
+    <div class="mk" style="width:110px;height:110px;border-radius:30px"></div>
+    <div class="mk"></div>
+    <div class="mk" style="width:34px;height:34px;border-radius:10px"></div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:18px;margin-top:76px">
+    <div class="mk" style="width:40px;height:40px;border-radius:12px"></div>
+    <div style="font-size:26px;font-weight:600;letter-spacing:-.01em">Agents for Agents</div>
+  </div>
+
+  <div class="rules" style="margin-top:70px">
+    <div class="rl"><div class="x">01</div><div><b>The knockout takes the background colour</b>
+      <span>On paper it is #faf8f5. On an ink band it is #16151a. It is never white by default,
+      which is what makes the mark sit in the page rather than on it.</span></div></div>
+    <div class="rl"><div class="x">02</div><div><b>Corner radius scales with the mark</b>
+      <span>Roughly 28 percent of the width on the outer square, 27 percent on the knockout.
+      A 24px mark uses a 7px radius. A 180px mark uses 50px.</span></div></div>
+    <div class="rl"><div class="x">03</div><div><b>Clear space is one knockout width</b>
+      <span>Nothing enters that margin. In the navigation the gap to the wordmark is 12px at
+      24px mark size.</span></div></div>
+    <div class="rl"><div class="x">04</div><div><b>Never recolour the gradient</b>
+      <span>135 degrees, Accent to Accent 2. Not flat, not reversed, not a third colour. If the
+      background cannot hold it, use the mark on an ink or paper plate instead.</span></div></div>
+  </div>
+  <div class="prun">Agents for Agents · Brand guide</div>
+  <div class="pnum">04</div>
+</div>
+
+<!-- ── 05 offer ladder ─────────────────────────────────────────── -->
+<div class="plate">
+  <div class="tag">Selling inside a page</div>
+  <h2 class="serif">A paid offer must <em>break the page</em>, not continue it.</h2>
+  <p class="lede">The single most important rule in this system. A reader scrolling past body copy
+  must never be able to mistake an offer for another paragraph. Six components, in ascending
+  loudness. Pick the quietest one that will still be seen.</p>
+
+  <div class="rungs">
+    <div class="rg"><div class="lv">1</div><div class="cn">.ptag</div>
+      <div><div class="ds">A price chip inside a route list heading. Turns a list of links into
+      a priced menu. Quietest possible signal that something costs money.</div>
+      <div class="bar" style="width:14%"></div></div></div>
+    <div class="rg"><div class="lv">2</div><div class="cn">.plug</div>
+      <div><div class="ds">Compact tinted band with a left rule. Used once, mid way through a
+      long free guide, to say a paid version exists without hijacking the guide.</div>
+      <div class="bar" style="width:28%"></div></div></div>
+    <div class="rg"><div class="lv">3</div><div class="cn">.offers .offer</div>
+      <div><div class="ds">Three card product grid with a gradient top edge. Ends most pages.
+      Use .hot on the one you want chosen.</div>
+      <div class="bar" style="width:46%"></div></div></div>
+    <div class="rg"><div class="lv">4</div><div class="cn">.offer-wide</div>
+      <div><div class="ds">One product promoted mid page, copy left and price right. For when a
+      single offer deserves the room but not the full band.</div>
+      <div class="bar" style="width:60%"></div></div></div>
+    <div class="rg"><div class="lv">5</div><div class="cn">.pitch</div>
+      <div><div class="ds">Full bleed ink band with a gradient top edge. One per page, placed at
+      the moment the reader is most convinced. Must sit outside section and outside wrap.</div>
+      <div class="bar" style="width:82%"></div></div></div>
+    <div class="rg"><div class="lv">6</div><div class="cn">.pitch-xl</div>
+      <div><div class="ds">The flagship. Full width head, the artifact shown as a mock, then the
+      arithmetic that makes the price feel small next to what it replaces.</div>
+      <div class="bar" style="width:100%"></div></div></div>
+  </div>
+
+  <p style="margin-top:44px;font-size:19px;color:var(--ink-2);max-width:66ch">The pattern that
+  does the selling is always the same: state the number plainly, then immediately put it next to
+  what it replaces. Never justify a price with adjectives.</p>
+  <div class="prun">Agents for Agents · Brand guide</div>
+  <div class="pnum">05</div>
+</div>
+
+<!-- ── 06 voice ────────────────────────────────────────────────── -->
+<div class="plate dark">
+  <div class="tag" style="color:#948fa3">Voice</div>
+  <h2 class="serif">Agent to agent. <em style="color:#a996ff">Never guru.</em></h2>
+  <p class="lede">Henry is a practicing agent who built these systems for his own book and then
+  packaged them. Every line on every page has to sound like it came from someone who still takes
+  listing appointments.</p>
+
+  <div class="rules">
+    <div class="rl"><div class="x" style="color:#e8a15c">01</div><div><b>No dashes. Ever.</b>
+      <span>No em dashes, no en dashes, no double hyphens, anywhere, including page titles,
+      markup and commit messages. Commas, colons and periods only. Titles use a middle dot.</span></div></div>
+    <div class="rl"><div class="x" style="color:#e8a15c">02</div><div><b>No hype vocabulary</b>
+      <span>Not game changer, unlock, 10x, revolutionary, or supercharge. If a sentence needs one
+      of those words to land, the claim underneath it is not strong enough.</span></div></div>
+    <div class="rl"><div class="x" style="color:#e8a15c">03</div><div><b>Sell the outcome, withhold the mechanism</b>
+      <span>A visitor should finish an offer page convinced it works and still not know exactly
+      how it is built. Free guide pages are the deliberate exception: those teach the thing
+      completely.</span></div></div>
+    <div class="rl"><div class="x" style="color:#e8a15c">04</div><div><b>Every number is real, with its assumptions shown</b>
+      <span>No income claims, no guarantees, no invented testimonials or logos, no fake urgency.
+      A figure without its arithmetic beside it does not go on the page.</span></div></div>
+    <div class="rl"><div class="x" style="color:#e8a15c">05</div><div><b>Compliance is a selling point</b>
+      <span>Fair housing, Do Not Call, opt out, and "nothing sends without you" get stated
+      plainly wherever they are relevant. They are the reason to buy, not a disclaimer.</span></div></div>
+  </div>
+  <div class="prun" style="color:#6d6878">Agents for Agents · Brand guide</div>
+  <div class="pnum" style="color:#6d6878">06</div>
+</div>
+
+<!-- ── 07 where it lives ───────────────────────────────────────── -->
+<div class="plate">
+  <div class="tag">Where it lives</div>
+  <h2 class="serif">One stylesheet. <em>One spec.</em></h2>
+  <p class="lede">Nothing in this document is maintained by hand. It describes files that already
+  run the site, and those files are the authority if the two ever disagree.</p>
+
+  <table class="where">
+    <tr><td>The brand system</td><td>~/Projects/agent-site/assets/brand.css</td></tr>
+    <tr><td>How to build a page</td><td>~/Projects/agent-site/PAGE_SPEC.md</td></tr>
+    <tr><td>Site source</td><td>~/Projects/agent-site</td></tr>
+    <tr><td>Repository</td><td>github.com/henryrowe2-droid/agents-site</td></tr>
+    <tr><td>Live domain</td><td>agents-for-agents.com</td></tr>
+    <tr><td>Fonts</td><td>Google Fonts: Instrument Serif, Inter, JetBrains Mono</td></tr>
+  </table>
+
+  <p style="margin-top:56px;font-size:19px;color:var(--ink-2);max-width:64ch">Every page is one
+  self contained index.html inside its own folder, linked to the shared stylesheet. A page never
+  contains a style block. A component that does not exist yet is added to brand.css under a
+  commented section, never inlined, so the system grows in one place instead of drifting across
+  seven.</p>
+
+  <div style="position:absolute;left:112px;bottom:150px;display:flex;align-items:center;gap:16px">
+    <div class="mk" style="width:36px;height:36px;border-radius:10px"></div>
+    <div style="font-size:17px;color:var(--mute)">Agents for Agents &nbsp;·&nbsp; Built in
+    Massachusetts by a working agent</div>
+  </div>
+  <div class="prun">Agents for Agents · Brand guide</div>
+  <div class="pnum">07</div>
+</div>
+
+</body>
+</html>
