@@ -57,7 +57,7 @@
     <h2 class="display serif rv">The link is <em>in your inbox</em>.</h2>
     <div class="copy">
       <p class="rv">The receipt with your download link comes from Payhip, the checkout I use. It usually lands within a minute or two. If it is not there, search your mail for <strong>Payhip</strong> rather than scrolling, and look in spam and in the promotions tab before you assume something went wrong.</p>
-      <p class="rv">Download the zip to your computer and leave it wherever your downloads normally go. You do not need to unzip it, rename it, or put it anywhere particular. The next step handles all of that.</p>
+      <p class="rv">Download the zip, then unzip it somewhere you will find it again. Your Desktop is fine. Inside is a file called START-HERE.md, and that is the only one you need to open. It is one page, it takes two minutes, and it decides the rest for you.</p>
     </div>
   </div>
 </section>
@@ -72,16 +72,16 @@
       <div class="dv rv">
         <div class="n">01</div>
         <div>
-          <h3>Download the zip from your email</h3>
-          <p>Open the receipt, click the download link, and save the file. That is the whole step. If you bought more than one pack you will have a link for each, and they install the same way, one after the other.</p>
+          <h3>Download the zip and unzip it</h3>
+          <p>Open the receipt, click the download link, save the file, and unzip it. Your Desktop is fine. If you bought more than one pack you will have a link for each, and each one works the same way.</p>
         </div>
       </div>
 
       <div class="dv rv">
         <div class="n">02</div>
         <div>
-          <h3>Hand the zip to Claude</h3>
-          <p>Open Claude, start a new chat, drag the zip file into the message box, and send the sentence below with it. Claude reads the install file inside, sets everything up, and shows you a demo from that one sentence. There is no configuration step and no setup call. If you can move a file and send a message, you can do this.</p>
+          <h3>Open START-HERE.md and pick your path</h3>
+          <p>That file is the one that matters, and it takes about two minutes. There are two ways to run this pack and both are real. In your browser at claude.ai you paste prompts straight out of <strong>PROMPTS.md</strong>, with nothing to install and no terminal. On your computer with Claude Code the pack installs itself and the skills trigger on their own without you naming them. START-HERE.md decides which one is yours and walks you through it, including the exact terminal steps if you take the computer route. <strong>Most agents should start in the browser.</strong> You can move up later, and nothing is lost if you never do.</p>
         </div>
       </div>
 
@@ -89,7 +89,7 @@
         <div class="n">03</div>
         <div>
           <h3>Run voice setup before anything else</h3>
-          <p>When the install finishes, say <strong>run voice-setup</strong>. It asks you a short set of questions about how you actually write: the words you use, the ones you would never say, how long your texts run, how formal you go with a luxury seller against a first time buyer. It takes about ten minutes. Every skill in the pack reads that profile before it drafts a single line, which is the difference between something that sounds like you and something that sounds like a chatbot in a blazer. Skipping it is the single most common reason a pack ends up sitting unused in a folder.</p>
+          <p>On the computer path, say <strong>run voice-setup</strong>. In the browser, use the voice-setup prompt in PROMPTS.md. Either way it asks about how you actually write: the words you use, the ones you would never say, how long your texts run, how formal you go with a luxury seller against a first time buyer. It wants three to five samples of your real writing and about ten minutes. Every other skill reads that profile before it drafts a line, which is the difference between something that sounds like you and something that sounds like a chatbot in a blazer. Skipping it is the single most common reason a pack ends up sitting unused in a folder.</p>
         </div>
       </div>
 
@@ -99,23 +99,23 @@
 
 <section id="install">
   <div class="wrap">
-    <div class="tag rv">The sentence</div>
-    <h2 class="display serif rv">Send this <em>with the zip attached</em>.</h2>
+    <div class="tag rv">The computer path</div>
+    <h2 class="display serif rv">One sentence, <em>once you are in the folder</em>.</h2>
     <div class="copy">
-      <p class="rv">One line. Nothing to fill in, nothing to configure. Attach the file first, then send it.</p>
+      <p class="rv">Only for the Claude Code path, and only after START-HERE.md has walked you through pointing your terminal at the unzipped pack. At that point you type <strong class="mono">claude</strong>, press Return, and send this. It installs every skill, checks they all landed, and runs a live demo on sample data so you can see the shape of it before you trust it with anything real.</p>
     </div>
 
     <div class="prompt rv">
       <div class="ptop">
-        <span>Paste into Claude, with the zip attached</span>
+        <span>Type this into Claude Code, inside the pack folder</span>
         <button class="pcopy" id="copyBtn" type="button">Copy sentence</button>
       </div>
-<pre id="promptText">Read INSTALL.md and set this up for me.</pre>
+<pre id="promptText">read INSTALL.md and set up</pre>
     </div>
 
     <div class="olist" style="margin-top:52px">
-      <div class="rv"><b>If you bought the Vault</b>There are thirteen pack folders inside that zip, each with its own install file and no single one at the top. Say <strong>set up every pack in here</strong> instead, and Claude works through all thirteen in one pass.</div>
-      <div class="rv"><b>What it does</b>Reads the install file, puts the skills where your Claude can find them, and then shows you one of them running on a real example so you can see the shape of it before you rely on it.</div>
+      <div class="rv"><b>In the browser instead</b>There is nothing to install and none of the above applies. Open PROMPTS.md, tell Claude to write in your voice with two samples of your real writing, then paste the prompt for whichever skill you want. That is the entire workflow.</div>
+      <div class="rv"><b>If you bought the Vault</b>That zip is thirteen pack folders with no single install file at the top. Set up one pack at a time, or point Claude at the whole folder and say <strong>set up every pack in here</strong>.</div>
       <div class="rv"><b>What it does not do</b>Nothing sends, posts, or dials on its own. Every skill drafts and hands it to you. Fair housing and Do Not Call guardrails are built into the ones where they belong.</div>
       <div class="rv"><b>Updates</b>Free for as long as the packs exist. When a skill gets improved or added, everyone who bought that pack gets the new version by email. One payment, no subscription, no seat count.</div>
     </div>
@@ -128,9 +128,9 @@
     <h2 class="display serif rv">Four things that <em>actually happen</em>.</h2>
     <ul class="safelist">
       <li class="rv"><b>The email has not arrived.</b> Give it five minutes, then search your mail for Payhip and check spam and promotions. If it is genuinely not there, email me and I will send the file directly.</li>
-      <li class="rv"><b>The install stalls partway.</b> Say <strong>keep going</strong>. If it is still stuck, start a fresh chat and attach the zip again. A clean chat fixes most of it.</li>
+      <li class="rv"><b>Terminal says command not found.</b> Claude Code is not installed on that computer yet. It is free and it runs on the Claude plan you already pay for. START-HERE.md tells you where to get it, or just start in the browser instead and skip the whole thing.</li>
       <li class="rv"><b>Everything it writes sounds generic.</b> You skipped voice setup, or you rushed the answers. Run it again and be honest in the answers, including the parts about what you would never say.</li>
-      <li class="rv"><b>You want a human.</b> Reply to your receipt email. That reaches me, not a help desk and not a ticket queue.</li>
+      <li class="rv"><b>You want a human.</b> Reply to your receipt email or DM <strong>@henryhandleshomes</strong> on Instagram. Both reach me, not a help desk and not a ticket queue.</li>
     </ul>
     <div class="copy">
       <p class="rv">One thing worth saying plainly, because it is the question I get most. <strong>These packs do not run your business while you are out.</strong> They draft, they research, they prepare, and then they stop and wait for you. That is deliberate. The moment a system sends something in your name without you reading it first is the moment it can cost you a client, a license, or both.</p>
