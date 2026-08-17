@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You are in · Agents for Agents</title>
+<meta name="description" content="Your download link is in your email. Three steps to get the pack installed and writing in your own voice, in about fifteen minutes.">
+<meta property="og:title" content="You are in">
+<meta property="og:description" content="Your download link is in your email. Three steps to get the pack installed and writing in your own voice, in about fifteen minutes.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/brand.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="mk"></span> Agents for Agents</a>
+    <div class="nl">
+      <a href="/">Home</a>
+      <a href="#steps">The steps</a>
+      <a href="#stuck">If it stalls</a>
+      <a class="cta-sm" href="mailto:henry@serhant.com?subject=Install%20help">Email me</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<header class="hero hero-a">
+  <div class="wrap">
+    <div class="eyebrow rv">Order complete</div>
+    <h1 class="display serif rv">Thank you. <em>Now let us get it working.</em></h1>
+    <p class="lede rv">Your download link is in your email, not on this page. Everything below takes about fifteen minutes, and ten of those minutes are the step most people skip and then wonder why the output reads like a chatbot wrote it.</p>
+    <div class="acts rv">
+      <a class="btn btn-fill" href="#steps">Start the setup</a>
+      <a class="btn btn-line" href="mailto:henry@serhant.com?subject=Install%20help">Email me instead</a>
+    </div>
+    <div class="hero-note rv">Runs in the normal Claude chat window. Claude Code is optional, not required.</div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div><b>Check your email</b> the link is in there</div>
+    <div><b>3 steps</b> zip to working pack</div>
+    <div><b>15 minutes</b> start to finish</div>
+    <div><b>Reply to the receipt</b> it reaches me</div>
+  </div>
+</div>
+
+<section>
+  <div class="narrow">
+    <div class="tag rv">First, the file</div>
+    <h2 class="display serif rv">The link is <em>in your inbox</em>.</h2>
+    <div class="copy">
+      <p class="rv">The receipt with your download link comes from Payhip, the checkout I use. It usually lands within a minute or two. If it is not there, search your mail for <strong>Payhip</strong> rather than scrolling, and look in spam and in the promotions tab before you assume something went wrong.</p>
+      <p class="rv">Download the zip to your computer and leave it wherever your downloads normally go. You do not need to unzip it, rename it, or put it anywhere particular. The next step handles all of that.</p>
+    </div>
+  </div>
+</section>
+
+<section id="steps" class="out">
+  <div class="wrap">
+    <div class="tag rv">The setup</div>
+    <h2 class="display serif rv">Three steps, <em>start to finish</em>.</h2>
+
+    <div class="deliv">
+
+      <div class="dv rv">
+        <div class="n">01</div>
+        <div>
+          <h3>Download the zip from your email</h3>
+          <p>Open the receipt, click the download link, and save the file. That is the whole step. If you bought more than one pack you will have a link for each, and they install the same way, one after the other.</p>
+        </div>
+      </div>
+
+      <div class="dv rv">
+        <div class="n">02</div>
+        <div>
+          <h3>Hand the zip to Claude</h3>
+          <p>Open Claude, start a new chat, drag the zip file into the message box, and send the sentence below with it. Claude reads the install file inside, sets everything up, and shows you a demo from that one sentence. There is no configuration step and no setup call. If you can move a file and send a message, you can do this.</p>
+        </div>
+      </div>
+
+      <div class="dv rv">
+        <div class="n">03</div>
+        <div>
+          <h3>Run voice setup before anything else</h3>
+          <p>When the install finishes, say <strong>run voice-setup</strong>. It asks you a short set of questions about how you actually write: the words you use, the ones you would never say, how long your texts run, how formal you go with a luxury seller against a first time buyer. It takes about ten minutes. Every skill in the pack reads that profile before it drafts a single line, which is the difference between something that sounds like you and something that sounds like a chatbot in a blazer. Skipping it is the single most common reason a pack ends up sitting unused in a folder.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <div class="tag rv">The sentence</div>
+    <h2 class="display serif rv">Send this <em>with the zip attached</em>.</h2>
+    <div class="copy">
+      <p class="rv">One line. Nothing to fill in, nothing to configure. Attach the file first, then send it.</p>
+    </div>
+
+    <div class="prompt rv">
+      <div class="ptop">
+        <span>Paste into Claude, with the zip attached</span>
+        <button class="pcopy" id="copyBtn" type="button">Copy sentence</button>
+      </div>
+<pre id="promptText">Read INSTALL.md and set this up for me.</pre>
+    </div>
+
+    <div class="olist" style="margin-top:52px">
+      <div class="rv"><b>If you bought the Vault</b>There are thirteen pack folders inside that zip, each with its own install file and no single one at the top. Say <strong>set up every pack in here</strong> instead, and Claude works through all thirteen in one pass.</div>
+      <div class="rv"><b>What it does</b>Reads the install file, puts the skills where your Claude can find them, and then shows you one of them running on a real example so you can see the shape of it before you rely on it.</div>
+      <div class="rv"><b>What it does not do</b>Nothing sends, posts, or dials on its own. Every skill drafts and hands it to you. Fair housing and Do Not Call guardrails are built into the ones where they belong.</div>
+      <div class="rv"><b>Updates</b>Free for as long as the packs exist. When a skill gets improved or added, everyone who bought that pack gets the new version by email. One payment, no subscription, no seat count.</div>
+    </div>
+  </div>
+</section>
+
+<section id="stuck" class="safe">
+  <div class="wrap">
+    <div class="tag rv">If something goes wrong</div>
+    <h2 class="display serif rv">Four things that <em>actually happen</em>.</h2>
+    <ul class="safelist">
+      <li class="rv"><b>The email has not arrived.</b> Give it five minutes, then search your mail for Payhip and check spam and promotions. If it is genuinely not there, email me and I will send the file directly.</li>
+      <li class="rv"><b>The install stalls partway.</b> Say <strong>keep going</strong>. If it is still stuck, start a fresh chat and attach the zip again. A clean chat fixes most of it.</li>
+      <li class="rv"><b>Everything it writes sounds generic.</b> You skipped voice setup, or you rushed the answers. Run it again and be honest in the answers, including the parts about what you would never say.</li>
+      <li class="rv"><b>You want a human.</b> Reply to your receipt email. That reaches me, not a help desk and not a ticket queue.</li>
+    </ul>
+    <div class="copy">
+      <p class="rv">One thing worth saying plainly, because it is the question I get most. <strong>These packs do not run your business while you are out.</strong> They draft, they research, they prepare, and then they stop and wait for you. That is deliberate. The moment a system sends something in your name without you reading it first is the moment it can cost you a client, a license, or both.</p>
+      <p class="rv">Everything here runs in my own business before it goes on sale. If a skill in your pack does something I would not let it do in mine, tell me and I will fix it for everybody.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="close">
+  <div class="wrap">
+    <h2 class="display serif rv">Installed is not the same as <em>used</em>.</h2>
+    <div class="copy rv"><p>Pick one skill today and run it on something real, a contact you have been avoiding, a listing you have to write, a week you cannot account for. The first real use is the whole difference. Everything after that is easy.</p></div>
+    <div class="acts rv">
+      <a class="btn btn-fill" href="mailto:henry@serhant.com?subject=Install%20help">Email me if you get stuck</a>
+      <a class="btn btn-line" href="/">Back to home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 Agents for Agents. Built in Massachusetts by a working agent.</div>
+    <div><a href="https://instagram.com/henryhandleshomes">Instagram</a> &nbsp; · &nbsp; <a href="mailto:henry@serhant.com">Email</a></div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((es) => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { rootMargin: '0px 0px -8% 0px', threshold: .12 });
+document.querySelectorAll('.rv').forEach((el, i) => {
+  el.style.transitionDelay = Math.min(i % 6, 5) * 55 + 'ms';
+  io.observe(el);
+});
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 12), { passive: true });
+
+const btn = document.getElementById('copyBtn');
+const pre = document.getElementById('promptText');
+btn.addEventListener('click', () => {
+  const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = 'Copy sentence', 1800); };
+  const fallback = () => {
+    const r = document.createRange(); r.selectNodeContents(pre);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    btn.textContent = 'Press Cmd C'; setTimeout(() => btn.textContent = 'Copy sentence', 2600);
+  };
+  if (navigator.clipboard) { navigator.clipboard.writeText(pre.innerText).then(done, fallback); }
+  else { fallback(); }
+});
+</script>
+</body>
+</html>
